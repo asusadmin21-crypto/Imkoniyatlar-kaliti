@@ -1,0 +1,16 @@
+{
+  "name": "IMKONIYATLAR KALITI — 24/7 Xalqaro Ta'lim, Tibbiyot va Telekommunikatsiya Platformasi",
+  "short_name": "Imkoniyatlar Kaliti",
+  "description": "Barcha operatsion tizimlarda 24/7 ishlovchi HTML, CSS, JS, Dasturlash, Med Texnikum (1-3 kurs), Tibbiyot, 1-12 sinf Maktab fanlari, Tillar va Telekommunikatsiya test hamda nazariya platformasi.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070d19",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

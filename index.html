@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMKONIYATLAR KALITI — 24/7 Xalqaro Ta'lim, Tibbiyot, Dasturlash va Telekommunikatsiya Platformasi</title>
+  <meta name="description" content="Barcha operatsion tizimlarda 24/7 ishlaydigan HTML, CSS, JS, Python, Java, C++, C#, PHP, Med Texnikum (1-3 kurs), Tibbiyot, 1-12 sinf Maktab fanlari, Xorijiy tillar va Telekommunikatsiya platformasi." />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- FIXED GLOBAL BACKGROUND: 30-year-old man at computer + 4th-grade boy reading book -->
+  <div class="global-backdrop" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       LIVE TOP STATUS BAR (Clock, Weather, Location, Currency Ticker, 24/7 OS)
+       Updates every second!
+       ======================================================================== -->
+  <div class="live-topbar">
+    <div class="live-topbar-inner">
+      <div class="live-group">
+        <span class="live-pill status-247">
+          <span class="pulse-dot"></span>
+          <span data-i18n="status247">24/7 Barcha OS da faol (Win/Mac/Linux/Android/iOS)</span>
+        </span>
+        <span class="live-pill" id="liveClockDisplay">⏰ Yuklanmoqda...</span>
+        <span class="live-pill">
+          <select id="citySelectDropdown" class="city-select" title="Joylashuvingizni tanlang"></select>
+          <span id="liveWeatherDisplay">☀️ +21.0°C</span>
+        </span>
+      </div>
+
+      <!-- Live Currency Rates Ticker (Updated every second) -->
+      <div class="currency-ticker-wrap" title="Barcha valyuta kurslari har soniyada jonli yangilanadi">
+        <div class="currency-ticker" id="liveCurrencyTicker"></div>
+      </div>
+
+      <div class="live-group">
+        <a href="mailto:asusadmin21@gmail.com" class="live-pill" style="text-decoration:none; color:#fde68a; border-color:rgba(245,158,11,0.4);">
+          ✉️ Admin: <strong>asusadmin21@gmail.com</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAIN HEADER & BRANDING ("IMKONIYATLAR KALITI")
+       ======================================================================== -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="#top" class="brand-box" onclick="switchView('viewHome'); return false;">
+        <div class="brand-logo-wrap">
+          <img src="assets/logo.png" alt="Imkoniyatlar Kaliti Logotipi" onerror="this.style.display='none'" />
+        </div>
+        <div>
+          <div class="brand-title">
+            🔑 <span data-i18n="siteName">IMKONIYATLAR KALITI</span>
+          </div>
+          <div class="brand-subtitle" data-i18n="siteTagline">
+            24/7 Barcha Operatsion Tizimlarda Ishlovchi Milliy va Xalqaro Ta'lim, Tibbiyot va Telekommunikatsiya Platformasi
+          </div>
+        </div>
+      </a>
+
+      <!-- Main Navigation -->
+      <nav class="main-nav">
+        <button class="nav-btn active" data-target="viewHome" onclick="switchView('viewHome')">
+          🏠 <span data-i18n="navHome">Bosh menyu</span>
+        </button>
+        <button class="nav-btn" data-target="viewTelecom" onclick="switchView('viewTelecom')">
+          📡 <span data-i18n="navTelecom">Telekom va Qurilmalar Chizmasi</span>
+        </button>
+        <button class="nav-btn" data-target="viewLeaderboard" onclick="switchView('viewLeaderboard'); renderLeaderboard('all');">
+          📊 <span data-i18n="navRating">Kunlik / Haftalik / Oylik Reyting</span>
+        </button>
+        <button class="nav-btn gold-btn" data-target="viewCertificate" onclick="switchView('viewCertificate'); renderCertificateView(false);">
+          🏆 <span data-i18n="navCertSample">Sertifikat va Namuna</span>
+        </button>
+        <button class="nav-btn" data-target="viewForum" onclick="switchView('viewForum'); renderForumPosts();">
+          💬 <span data-i18n="navForum">Bildirgi va Muhokama</span>
+        </button>
+      </nav>
+
+      <!-- Language Switcher (UZ / RU / EN) & One-Time User Profile Chip -->
+      <div class="header-controls">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
+          <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        </div>
+        <div class="user-badge" id="headerUserBadge" onclick="openRegistrationModal()">
+          👤 <span>Ro'yxatdan o'tish</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN APPLICATION WORKSPACE
+       ======================================================================== -->
+  <main class="app-container" id="top">
+
+    <!-- ==================== 1. HOME / MAIN MENU VIEW ==================== -->
+    <section id="viewHome">
+      <div class="hero-banner">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge">
+              ✨ <span data-i18n="heroBadge">Cheksiz va Takrorlanmas Millionlab Testlar va Nazariyalar Bazasi</span>
+            </div>
+            <h1 class="hero-title" data-i18n="heroTitle">
+              Bilim — kelajak kaliti! A'lo kayfiyatda o'rganing va 5 marta A'lo baho olib Ota-onangiz uchun Minnatdorchilik Sertifikatiga ega bo'ling!
+            </h1>
+            <p class="hero-desc" data-i18n="heroDesc">
+              HTML, CSS, JS, Python, Java, C/C++, C#, PHP, Tibbiyot (1-3 kurs Med texnikum va OTM), Telekommunikatsiya (L1-L3 Switch, Router, SFP, Wi-Fi, IP Kamera, NVR, Serverlar chizmalari bilan), Maktab fanlari (1-12 sinf) hamda Nemis (Germaniya ishlash/sertifikat), Ingliz, Rus, Xitoy va Koreys tillari!
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button class="btn btn-primary" onclick="initiateSubjectTest('html5')">
+                🚀 HTML / CSS / JS 30 talik Testni Boshlash
+              </button>
+              <button class="btn btn-gold" onclick="switchView('viewCertificate'); renderCertificateView(true);">
+                📜 Sertifikat Namunasini Ko'rish
+              </button>
+              <button class="btn btn-secondary" onclick="switchView('viewTelecom')">
+                🖧 Tarmoq Qurilmalari va Chizmalari
+              </button>
+            </div>
+
+            <!-- Main Menu Visit & Usage Statistics -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-value" id="statVisitsVal">1 marta</div>
+                <div class="stat-label" data-i18n="statVisits">Saytga kirishlar soni</div>
+              </div>
+              <div class="stat-card green">
+                <div class="stat-value" id="statSolvedVal">0 ta</div>
+                <div class="stat-label" data-i18n="statSolvedTests">Bajarilgan testlar</div>
+              </div>
+              <div class="stat-card gold">
+                <div class="stat-value" id="statExcellentVal">0 / 5 A'lo 🏆</div>
+                <div class="stat-label" data-i18n="statExcellentCount">5x A'lo Sertifikat ko'rsatkichi</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">15,000,000+</div>
+                <div class="stat-label" data-i18n="statUniqueQuestions">Takrorlanmas savollar bazasi</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="statActiveTimeVal">0 daq 0 soniya</div>
+                <div class="stat-label" data-i18n="statActiveTime">Umumiy foydalanish vaqti</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dual Visual Card: 30-year-old at computer + 4th-grade boy reading a book -->
+          <div class="hero-visual-card">
+            <div class="dual-portrait-frame">
+              <img src="assets/bg-education.png" alt="Kompyuter oldida o'tirgan 30 yoshli mutaxassis va kitob o'qiyotgan 4-sinf o'quvchisi" class="dual-portrait-img" />
+            </div>
+            <div class="portrait-overlay-captions">
+              <div class="portrait-caption-box">
+                <span style="font-size:1.3rem;">👦📖</span>
+                <span data-i18n="caption4thGrade">4-sinf o'quvchisi kitob mutolaa qilmoqda — uzluksiz ta'lim!</span>
+              </div>
+              <div class="portrait-caption-box">
+                <span style="font-size:1.3rem;">👨‍💻🖥️</span>
+                <span data-i18n="caption30yo">30 yoshli dasturchi va muhandis zamonaviy kompyuter oldida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Search Bar -->
+      <div class="control-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearchInput" class="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Fan, kurs, sinf, dasturlash tili yoki tarmoq qurilmasini qidiring..." />
+        </div>
+        <div class="category-pills">
+          <button class="cat-pill active" data-cat="all" data-i18n="catAll">Barchasi (26 yo'nalish)</button>
+          <button class="cat-pill" data-cat="webprog" data-i18n="catWebProg">Web &amp; Dasturlash (HTML/CSS/JS/Python/C++...)</button>
+          <button class="cat-pill" data-cat="med" data-i18n="catMed">Med Texnikum (1-3 kurs) &amp; Tibbiyot</button>
+          <button class="cat-pill" data-cat="school" data-i18n="catSchool">Maktab va OTM (1-12 sinf fanlari)</button>
+          <button class="cat-pill" data-cat="langs" data-i18n="catLangs">Tillar (Ingliz, Rus, Nemis, Xitoy, Koreys)</button>
+          <button class="cat-pill" data-cat="telecom" data-i18n="catTelecom">Telekommunikatsiya &amp; Tarmoqlar</button>
+        </div>
+      </div>
+
+      <!-- Subjects & Courses Cards Grid -->
+      <div class="subjects-grid" id="subjectsGridContainer"></div>
+    </section>
+
+    <!-- ==================== 2. 30-QUESTION TEST ENGINE VIEW ==================== -->
+    <section id="viewTestEngine" class="hidden">
+      <div class="subview-backbar">
+        <div>
+          <h2 id="testHeaderTitle" style="font-size:1.25rem; color:#38bdf8;">30 talik Test Sinovi</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            👤 Ishtirokchi: <strong id="testUserFullname"></strong> | Har bir test va savol takrorlanmas!
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="test-workspace">
+        <!-- Start Time, Elapsed Time, End Time, Score -->
+        <div class="test-timestamps-bar">
+          <div class="timestamp-box">
+            <span class="timestamp-label" data-i18n="lblStartTime">Boshlanish vaqti</span>
+            <span class="timestamp-val" id="testStartTimeVal">--:--:--</span>
+          </div>
+          <div class="timestamp-box">
+            <span class="timestamp-label" data-i18n="lblElapsedTime">Bajarilayotgan vaqt</span>
+            <span class="timestamp-val" id="testElapsedTimeVal">00:00:00</span>
+          </div>
+          <div class="timestamp-box">
+            <span class="timestamp-label" data-i18n="lblEndTime">Tugatgan vaqti</span>
+            <span class="timestamp-val" id="testEndTimeVal">Jarayonda...</span>
+          </div>
+          <div class="timestamp-box">
+            <span class="timestamp-label" data-i18n="lblScore">Natija</span>
+            <span class="timestamp-val" id="testLiveScoreVal" style="color:#34d399;">0 / 30</span>
+          </div>
+        </div>
+
+        <!-- 30 Question Number Pills -->
+        <div class="question-progress-pills" id="questionProgressPills"></div>
+
+        <!-- Active Question Card -->
+        <div class="question-box" id="activeQuestionBox"></div>
+
+        <!-- Question Controls -->
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <button class="btn btn-secondary" onclick="prevTestQuestion()">⬅️ Oldingi savol</button>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-gold" onclick="finalize30QuestionTest(); renderActiveTestUI();">🏁 Testni Yakunlash va Natijani Olish</button>
+            <button class="btn btn-primary" onclick="nextTestQuestion()">Keyingi savol ➡️</button>
+          </div>
+        </div>
+
+        <!-- Test Completion & Multi-format Result Download Panel -->
+        <div id="testResultSummaryPanel" class="hidden" style="margin-top:24px; padding:22px; border-radius:14px; background:rgba(16,185,129,0.12); border:1px solid #10b981;">
+          <div id="testSummaryDetails"></div>
+          <div style="margin-top:16px;">
+            <h4 style="margin-bottom:10px; color:#38bdf8;">📥 Ushbu Test Natijasini Yuklab Olish (Barcha Formatlarda):</h4>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <button class="btn btn-primary" onclick="downloadCurrentTestResult('pdf')">📄 PDF / Chop etish</button>
+              <button class="btn btn-secondary" onclick="downloadCurrentTestResult('doc')">📘 Word (.DOC) yuklab olish</button>
+              <button class="btn btn-secondary" onclick="downloadCurrentTestResult('txt')">📝 Matn (.TXT) yuklab olish</button>
+              <button class="btn btn-secondary" onclick="downloadCurrentTestResult('csv')">📊 Excel (.CSV) yuklab olish</button>
+              <button class="btn btn-secondary" onclick="downloadCurrentTestResult('json')">⚙️ JSON yuklab olish</button>
+              <button class="btn btn-success" onclick="start30QuestionTestSession(AppState.activeTest.subject.id, AppState.activeTest.level)">🔄 Yangi Takrorlanmas 30 ta Test Boshlash</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Star Rating at the end of Test -->
+        <div id="testStarRatingMount"></div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. THEORY & PRACTICAL LAB VIEW ==================== -->
+    <section id="viewTheory" class="hidden">
+      <div class="subview-backbar">
+        <h2>📖 Nazariy va Amaliy Mashg'ulotlar Bazasi (Har kuni yangilanadi va takrorlanmaydi)</h2>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+      <div id="theoryContentContainer"></div>
+    </section>
+
+    <!-- ==================== 4. TELECOM & HARDWARE SCHEMATICS VIEW ==================== -->
+    <section id="viewTelecom" class="hidden">
+      <div class="subview-backbar">
+        <div>
+          <h2>📡 Telekommunikatsiya Qurilmalari, Portlar, OSI 7 Pog'onasi va Ulanish Chizmalari</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            L1/L2/L3 Switchlar, Routerlar, Wi-Fi 4/5/6/7, SIM-kartali 4G/5G Routerlar, IP Kameralar, NVR, SFP Modullar, LAN Kabellar, IP Telefoniya, Serverlar va Kompyuter Portlari.
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="hardware-grid" id="telecomHardwareGrid"></div>
+      <div id="telecomStarRatingMount"></div>
+    </section>
+
+    <!-- ==================== 5. DAILY / WEEKLY / MONTHLY LEADERBOARD VIEW ==================== -->
+    <section id="viewLeaderboard" class="hidden">
+      <div class="subview-backbar">
+        <div>
+          <h2>📊 Kunlik, Haftalik va Oylik Reyting Jadvali</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            30 talik testlarni a'lo kayfiyatda yechgan peshqadam foydalanuvchilar va 5x A'lo Sertifikat sohiblari
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="test-workspace">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
+          <button class="btn btn-primary" onclick="renderLeaderboard('daily')">📅 Kunlik Reyting</button>
+          <button class="btn btn-secondary" onclick="renderLeaderboard('weekly')">📆 Haftalik Reyting</button>
+          <button class="btn btn-secondary" onclick="renderLeaderboard('monthly')">🗓️ Oylik Reyting</button>
+          <button class="btn btn-gold" onclick="renderLeaderboard('all')">🏆 Barcha Peshqadamlar</button>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>O'rin</th>
+                <th>F.I.Sh. (Ism, Familiya, Sharif)</th>
+                <th>Fan va Yo'nalish</th>
+                <th>To'plagan Bali (30 tadan)</th>
+                <th>Maqomi</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. CERTIFICATE & SAMPLE VIEW ==================== -->
+    <section id="viewCertificate" class="hidden">
+      <div class="subview-backbar">
+        <div>
+          <h2>🏆 "IMKONIYATLAR KALITI" Faxriy Sertifikati va Namunasi</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            Testni 5 marta "A'lo" bahoga bajargan shaxsga va uning Ota-onasiga Sayt Admini (asusadmin21@gmail.com) nomidan Minnatdorchilik Sertifikati
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="theory-block" id="certProgressNotice" style="text-align:center;"></div>
+
+      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
+        <button class="btn btn-primary" onclick="renderCertificateView(false)">👤 Mening Ismim Bilan Ko'rsatish</button>
+        <button class="btn btn-secondary" onclick="renderCertificateView(true)">🖼️ Sertifikat Namunasini Ko'rsatish</button>
+        <button class="btn btn-secondary" onclick="openRegistrationModal()">✏️ Ism-Familiya / Ota-ona ma'lumotini tahrirlash</button>
+      </div>
+
+      <!-- Visual Certificate Frame -->
+      <div class="certificate-frame" id="certificateVisualBox">
+        <div class="cert-corner tl"></div>
+        <div class="cert-corner tr"></div>
+        <div class="cert-corner bl"></div>
+        <div class="cert-corner br"></div>
+
+        <div style="display:flex; justify-content:center; align-items:center; gap:12px;">
+          <img src="assets/logo.png" alt="Logo" style="width:64px; height:64px; border-radius:14px; border:2px solid #fbbf24;" />
+        </div>
+        <div class="cert-header-title">IMKONIYATLAR KALITI</div>
+        <div style="color:#fde68a; font-weight:700; font-size:0.95rem; margin-top:4px;">
+          FAXRIY SERTIFIKAT VA OTA-ONAGA MINNATDORCHILIK NOMASI
+        </div>
+
+        <p style="margin-top:14px; color:var(--text-muted);">Ushbu faxriy sertifikat bilan taqdirlanadi:</p>
+        <div class="cert-recipient" id="certRecipientName">NAMUNA: Karimov Jasurbek Rustam o'g'li</div>
+
+        <div class="cert-parents-box" id="certParentsGreeting"></div>
+
+        <div class="cert-footer">
+          <div>
+            <div style="color:#fbbf24; font-weight:800;">Sertifikat ID Raqami:</div>
+            <div id="certSerialCode" style="font-family:monospace;">IK-SAMPLE-2026-0001</div>
+            <div style="color:var(--text-muted); font-size:0.82rem; margin-top:4px;">Berilgan sana: <span id="certIssueDate"></span></div>
+          </div>
+
+          <div class="cert-seal">
+            IMKONIYATLAR KALITI<br/>5x A'LO<br/>TASDIQLANGAN
+          </div>
+
+          <div>
+            <div style="color:#38bdf8; font-weight:800;">IMKONIYATLAR KALITI Admini:</div>
+            <div style="font-weight:700;">asusadmin21@gmail.com</div>
+            <div style="color:#34d399; font-size:0.82rem; margin-top:4px;">Rasmiy Elektron Tasdiq ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-format Certificate Download Bar -->
+      <div class="theory-block" style="margin-top:22px; text-align:center;">
+        <h3 style="margin-bottom:12px;">📥 Sertifikatni Barcha Fayl Ko'rinishlarida Yuklab Olish:</h3>
+        <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
+          <button class="btn btn-gold" onclick="downloadCertificate('pdf')">📕 PDF Formatda Yuklab Olish / Chop etish</button>
+          <button class="btn btn-primary" onclick="downloadCertificate('doc')">📘 Word (.DOC) Formatda Yuklab Olish</button>
+          <button class="btn btn-success" onclick="downloadCertificate('png')">🖼️ Rasm (.PNG Yuqori Sifat) Yuklab Olish</button>
+          <button class="btn btn-secondary" onclick="downloadCertificate('svg')">📐 Vektor (.SVG) Formatda Yuklab Olish</button>
+          <button class="btn btn-secondary" onclick="downloadCertificate('html')">🌐 Web (.HTML) Formatda Yuklab Olish</button>
+          <button class="btn btn-secondary" onclick="downloadCertificate('txt')">📝 Matn (.TXT) Formatda Yuklab Olish</button>
+          <button class="btn btn-secondary" onclick="downloadCertificate('json')">⚙️ Ma'lumot (.JSON) Formatda Yuklab Olish</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. COMMUNITY FEEDBACK & Q&A FORUM VIEW ==================== -->
+    <section id="viewForum" class="hidden">
+      <div class="subview-backbar">
+        <div>
+          <h2>💬 Foydalanuvchilar Bildirgisi, Savol-Javob va Admin Bilan Muhokama</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            Sayt haqida o'z fikringizni qoldiring, boshqa foydalanuvchilar bilan savol-javob qiling yoki Admin (<strong>asusadmin21@gmail.com</strong>) bilan bog'laning
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="test-workspace" style="margin-bottom:22px;">
+        <h3 style="margin-bottom:12px; color:#38bdf8;">✍️ Yangi Bildirgi, Fikr yoki Savol Qoldirish</h3>
+        <form onsubmit="handleNewForumPost(event)">
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="font-size:0.82rem; color:var(--text-muted);">Ism-Familiyangiz (Ro'yxatdan o'tgan bo'lsangiz avtomatik yoziladi):</label>
+              <input type="text" id="forumAuthorInput" class="form-input" placeholder="F.I.Sh." />
+            </div>
+            <div>
+              <label style="font-size:0.82rem; color:var(--text-muted);">Murojaat yo'nalishi:</label>
+              <select id="forumCategorySelect" class="form-input">
+                <option value="Sayt haqida fikr va bildirgi">🌟 Sayt haqida fikr va bildirgi</option>
+                <option value="Adminga (asusadmin21@gmail.com) savol va taklif">👑 Adminga (asusadmin21@gmail.com) savol va taklif</option>
+                <option value="Foydalanuvchilar o'rtasida savol-javob (IT / Dasturlash)">💻 Foydalanuvchilar o'rtasida savol-javob (IT / Dasturlash)</option>
+                <option value="Med Texnikum va Tibbiyot savol-javoblari">🏥 Med Texnikum va Tibbiyot savol-javoblari</option>
+                <option value="Telekommunikatsiya va Tarmoq qurilmalari muhokamasi">📡 Telekommunikatsiya va Tarmoq qurilmalari muhokamasi</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="forumMessageInput" rows="3" class="form-textarea" required placeholder="O'z fikringiz, savolingiz yoki taklifingizni yozing... (Boshlanish, bajarish va tugatish vaqti avtomatik qayd etiladi)"></textarea>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <button type="submit" class="btn btn-primary">📤 Bildirgini E'lon Qilish</button>
+            <a href="mailto:asusadmin21@gmail.com?subject=Imkoniyatlar%20Kaliti%20Foydalanuvchi%20Murojaati" class="btn btn-gold">
+              ✉️ Admin pochtaga to'g'ridan-to'g'ri yozish (asusadmin21@gmail.com)
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <div id="forumPostsContainer"></div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       ONE-TIME USER REGISTRATION MODAL (Asked only once, stored in localStorage)
+       ======================================================================== -->
+  <div id="registrationModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <h3 style="color:#fbbf24; font-size:1.25rem; margin-bottom:6px;" data-i18n="regModalTitle">
+        Foydalanuvchi ma'lumotlarini kiritish (Faqat 1 marta so'raladi)
+      </h3>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;" data-i18n="regModalDesc">
+        Ma'lumotlaringiz xotirada saqlanadi va qayta kiritish talab etilmaydi. Sertifikat sizning va ota-onangizning nomiga rasmiylashtiriladi.
+      </p>
+      <form onsubmit="handleSaveRegistration(event)">
+        <div class="form-group">
+          <label data-i18n="lblLastName">Familiyangiz *</label>
+          <input type="text" id="regLastName" class="form-input" required placeholder="Masalan: Karimov" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblFirstName">Ismingiz *</label>
+          <input type="text" id="regFirstName" class="form-input" required placeholder="Masalan: Jasurbek" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblMiddleName">Otasining ismi (Sharifingiz) *</label>
+          <input type="text" id="regMiddleName" class="form-input" required placeholder="Masalan: Rustam o'g'li" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblParentsNames">Ota-onangizning F.I.Sh. (Minnatdorchilik sertifikati uchun)</label>
+          <input type="text" id="regParentsNames" class="form-input" placeholder="Masalan: Rustam aka va Dilfuza opa" />
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px;">
+          <button type="button" class="btn btn-secondary" onclick="closeRegistrationModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-gold" data-i18n="btnSaveProfile">Saqlash va Davom etish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div style="max-width:1200px; margin:0 auto;">
+      <p style="font-size:1rem; font-weight:800; color:#fbbf24; margin-bottom:6px;">
+        🔑 IMKONIYATLAR KALITI — 24/7 Barcha Operatsion Tizimlarda Ishlovchi Milliy va Xalqaro Ta'lim Platformasi
+      </p>
+      <p style="margin-bottom:8px;">
+        <span data-i18n="lblAdminContact">Imkoniyatlar Kaliti Admini bilan bog'lanish:</span>
+        <a href="mailto:asusadmin21@gmail.com" style="color:#38bdf8; font-weight:700; margin-left:6px;">asusadmin21@gmail.com</a>
+      </p>
+      <p style="font-size:0.78rem; color:var(--text-dim);">
+        Windows • macOS • Linux • Android • iOS | O'zbek • Русский • English | Barcha test va nazariyalar har kuni yangilanadi va qayta takrorlanmaydi.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data-telecom.js"></script>
+  <script src="js/data-subjects.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
