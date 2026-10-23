@@ -1067,12 +1067,10 @@ function getCertificateData(isSample = false) {
 }
 
 function getCertificateVerifyUrl(data) {
-  let baseUrl = "https://imkoniyatlar-kaliti.uz/";
+  let baseUrl = "https://imkoniyatlar-kaliti-1.vercel.app/";
   try {
     if (window.location && window.location.protocol && window.location.protocol.startsWith("http")) {
       baseUrl = window.location.origin + window.location.pathname;
-    } else if (window.location && window.location.href) {
-      baseUrl = window.location.href.split("?")[0].split("#")[0];
     }
   } catch (_) {}
 
@@ -1084,7 +1082,6 @@ function getCertificateVerifyUrl(data) {
   });
   const fullUrl = `${baseUrl}?${params.toString()}#viewCertificate`;
 
-  // Keep payload compact if opened from a deep local file path so QR Version <= 10 fits easily
   if (fullUrl.length > 210) {
     return `${baseUrl}?cert=1&id=${encodeURIComponent(data.certId)}#viewCertificate`;
   }
