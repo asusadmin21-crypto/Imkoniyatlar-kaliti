@@ -1024,7 +1024,8 @@ function build30QuestionTest(subjectId, level) {
 
   let seenHashes = [];
   try {
-    seenHashes = JSON.parse(localStorage.getItem('ik_seen_questions') || '[]');
+    const rawSeen = (window.SafeStorage ? window.SafeStorage.getItem('ik_seen_questions') : localStorage.getItem('ik_seen_questions')) || '[]';
+    seenHashes = JSON.parse(rawSeen);
   } catch (_) {
     seenHashes = [];
   }
@@ -1072,7 +1073,11 @@ function build30QuestionTest(subjectId, level) {
   // Persist seen hashes (keep last 5000 so localStorage stays fast and clean)
   try {
     const updated = Array.from(seenSet).slice(-5000);
-    localStorage.setItem('ik_seen_questions', JSON.stringify(updated));
+    if (window.SafeStorage) {
+      window.SafeStorage.setItem('ik_seen_questions', JSON.stringify(updated));
+    } else {
+      localStorage.setItem('ik_seen_questions', JSON.stringify(updated));
+    }
   } catch (_) {}
 
   return {

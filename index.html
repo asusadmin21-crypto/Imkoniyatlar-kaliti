@@ -2,11 +2,18 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Imkoniyatlar Kaliti" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#070d19" />
+  <meta name="format-detection" content="telephone=no" />
   <title>IMKONIYATLAR KALITI — 24/7 Xalqaro Ta'lim, Tibbiyot, Dasturlash va Telekommunikatsiya Platformasi</title>
-  <meta name="description" content="Barcha operatsion tizimlarda 24/7 ishlaydigan HTML, CSS, JS, Python, Java, C++, C#, PHP, Med Texnikum (1-3 kurs), Tibbiyot, 1-12 sinf Maktab fanlari, Xorijiy tillar va Telekommunikatsiya platformasi." />
+  <meta name="description" content="Barcha operatsion tizimlarda (iPhone, iPad, Android, Planshet, Windows, macOS, Linux) 24/7 ishlaydigan HTML, CSS, JS, Python, Java, C++, C#, PHP, Med Texnikum (1-3 kurs), Tibbiyot, 1-12 sinf Maktab fanlari, Xorijiy tillar va Telekommunikatsiya platformasi." />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -23,7 +30,7 @@
       <div class="live-group">
         <span class="live-pill status-247">
           <span class="pulse-dot"></span>
-          <span data-i18n="status247">24/7 Barcha OS da faol (Win/Mac/Linux/Android/iOS)</span>
+          <span data-i18n="status247">24/7 Barcha OS da faol (iPhone/iPad/Android/Win/Mac/Linux)</span>
         </span>
         <span class="live-pill" id="liveClockDisplay">⏰ Yuklanmoqda...</span>
         <span class="live-pill">
@@ -111,7 +118,7 @@
               ✨ <span data-i18n="heroBadge">Cheksiz va Takrorlanmas Millionlab Testlar va Nazariyalar Bazasi</span>
             </div>
             <h1 class="hero-title" data-i18n="heroTitle">
-              Bilim — kelajak kaliti! A'lo kayfiyatda o'rganing va 5 marta A'lo baho olib Ota-onangiz uchun Minnatdorchilik Sertifikatiga ega bo'ling!
+              Bilim — kelajak kaliti! A'lo kayfiyatda o'rganing va 5 marta takroran A'lo baho olib "IMKONIYATLAR KALITI" Rasmiy A4 Elektron Sertifikatiga ega bo'ling!
             </h1>
             <p class="hero-desc" data-i18n="heroDesc">
               HTML, CSS, JS, Python, Java, C/C++, C#, PHP, Tibbiyot (1-3 kurs Med texnikum va OTM), Telekommunikatsiya (L1-L3 Switch, Router, SFP, Wi-Fi, IP Kamera, NVR, Serverlar chizmalari bilan), Maktab fanlari (1-12 sinf) hamda Nemis (Germaniya ishlash/sertifikat), Ingliz, Rus, Xitoy va Koreys tillari!
@@ -332,13 +339,13 @@
       </div>
     </section>
 
-    <!-- ==================== 6. CERTIFICATE & SAMPLE VIEW ==================== -->
+    <!-- ==================== 6. CERTIFICATE & SAMPLE VIEW (A4 FORMAT + QR/BARCODE) ==================== -->
     <section id="viewCertificate" class="hidden">
       <div class="subview-backbar">
         <div>
-          <h2>🏆 "IMKONIYATLAR KALITI" Faxriy Sertifikati va Namunasi</h2>
+          <h2>🏆 "IMKONIYATLAR KALITI" Rasmiy A4 Elektron Sertifikati</h2>
           <p style="font-size:0.86rem; color:var(--text-muted);">
-            Testni 5 marta "A'lo" bahoga bajargan shaxsga va uning Ota-onasiga Sayt Admini (asusadmin21@gmail.com) nomidan Minnatdorchilik Sertifikati
+            Testlarni 5 marta takroran "A'LO" bahoga bajarganligi uchun "IMKONIYATLAR KALITI" platformasi va Sayt Admini (asusadmin21@gmail.com) nomidan ezgu tilaklar hamda QR-kod / Shtrix-kodli A4 Sertifikat
           </p>
         </div>
         <button class="btn-exit-back" onclick="switchView('viewHome')">
@@ -351,57 +358,63 @@
       <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
         <button class="btn btn-primary" onclick="renderCertificateView(false)">👤 Mening Ismim Bilan Ko'rsatish</button>
         <button class="btn btn-secondary" onclick="renderCertificateView(true)">🖼️ Sertifikat Namunasini Ko'rsatish</button>
-        <button class="btn btn-secondary" onclick="openRegistrationModal()">✏️ Ism-Familiya / Ota-ona ma'lumotini tahrirlash</button>
+        <button class="btn btn-secondary" onclick="openRegistrationModal()">✏️ Ism-Familiya ma'lumotini tahrirlash</button>
+        <button class="btn btn-gold" onclick="downloadCertificate('pdf')">🖨️ A4 Formatda Chop Etish / PDF Saqlash</button>
       </div>
 
-      <!-- Visual Certificate Frame -->
-      <div class="certificate-frame" id="certificateVisualBox">
-        <div class="cert-corner tl"></div>
-        <div class="cert-corner tr"></div>
-        <div class="cert-corner bl"></div>
-        <div class="cert-corner br"></div>
+      <!-- Visual Certificate Frame (A4 Format Proportion: 297mm x 210mm) -->
+      <div class="certificate-a4-wrapper">
+        <div class="certificate-frame" id="certificateVisualBox">
+          <div class="cert-corner tl"></div>
+          <div class="cert-corner tr"></div>
+          <div class="cert-corner bl"></div>
+          <div class="cert-corner br"></div>
 
-        <div style="display:flex; justify-content:center; align-items:center; gap:12px;">
-          <img src="assets/logo.png" alt="Logo" style="width:64px; height:64px; border-radius:14px; border:2px solid #fbbf24;" />
-        </div>
-        <div class="cert-header-title">IMKONIYATLAR KALITI</div>
-        <div style="color:#fde68a; font-weight:700; font-size:0.95rem; margin-top:4px;">
-          FAXRIY SERTIFIKAT VA OTA-ONAGA MINNATDORCHILIK NOMASI
-        </div>
+          <div class="cert-a4-badge">📐 A4 FORMAT (297 × 210 mm) • ELEKTRON TASDIQLANGAN</div>
 
-        <p style="margin-top:14px; color:var(--text-muted);">Ushbu faxriy sertifikat bilan taqdirlanadi:</p>
-        <div class="cert-recipient" id="certRecipientName">NAMUNA: Karimov Jasurbek Rustam o'g'li</div>
-
-        <div class="cert-parents-box" id="certParentsGreeting"></div>
-
-        <div class="cert-footer">
-          <div>
-            <div style="color:#fbbf24; font-weight:800;">Sertifikat ID Raqami:</div>
-            <div id="certSerialCode" style="font-family:monospace;">IK-SAMPLE-2026-0001</div>
-            <div style="color:var(--text-muted); font-size:0.82rem; margin-top:4px;">Berilgan sana: <span id="certIssueDate"></span></div>
+          <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-top:4px;">
+            <img src="assets/logo.png" alt="Logo" style="width:60px; height:60px; border-radius:14px; border:2px solid #fbbf24;" />
+          </div>
+          <div class="cert-header-title">IMKONIYATLAR KALITI</div>
+          <div class="cert-subtitle-banner">
+            5 MARTA TAKRORAN "A'LO" BAHOGA BAJARGANLIK UCHUN RASMIY SERTIFIKAT
           </div>
 
-          <div class="cert-seal">
-            IMKONIYATLAR KALITI<br/>5x A'LO<br/>TASDIQLANGAN
-          </div>
+          <p style="margin-top:10px; color:var(--text-muted); font-size:0.95rem;">Ushbu faxriy sertifikat bilan taqdirlanadi:</p>
+          <div class="cert-recipient" id="certRecipientName">NAMUNA: Karimov Jasurbek Rustam o'g'li</div>
 
-          <div>
-            <div style="color:#38bdf8; font-weight:800;">IMKONIYATLAR KALITI Admini:</div>
-            <div style="font-weight:700;">asusadmin21@gmail.com</div>
-            <div style="color:#34d399; font-size:0.82rem; margin-top:4px;">Rasmiy Elektron Tasdiq ✓</div>
+          <div class="cert-parents-box" id="certParentsGreeting"></div>
+
+          <div class="cert-footer">
+            <div class="cert-footer-col">
+              <div style="color:#fbbf24; font-weight:800;">Sertifikat ID Raqami:</div>
+              <div id="certSerialCode" style="font-family:monospace; font-size:1rem; font-weight:700; color:#fff;">IK-SAMPLE-2026-0001</div>
+              <div style="color:var(--text-muted); font-size:0.82rem; margin-top:4px;">Berilgan sana: <span id="certIssueDate"></span></div>
+              <div style="color:#38bdf8; font-size:0.78rem; margin-top:2px;">Format: Standart A4 (Elektron)</div>
+            </div>
+
+            <!-- Middle QR Code & Barcode (Shtrix-kod) replacing the old round seal -->
+            <div class="cert-qr-barcode-box" id="certQrBarcodeBox"></div>
+
+            <div class="cert-footer-col">
+              <div style="color:#38bdf8; font-weight:800;">IMKONIYATLAR KALITI Admini:</div>
+              <div style="font-weight:700;">asusadmin21@gmail.com</div>
+              <div style="color:#34d399; font-size:0.82rem; margin-top:4px;">Rasmiy Sayt Nomidan Tasdiqlangan ✓</div>
+              <div style="color:#fde68a; font-size:0.78rem; margin-top:2px;">5x A'LO Baho So'zsiz Ko'rsatkichi</div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Multi-format Certificate Download Bar -->
       <div class="theory-block" style="margin-top:22px; text-align:center;">
-        <h3 style="margin-bottom:12px;">📥 Sertifikatni Barcha Fayl Ko'rinishlarida Yuklab Olish:</h3>
+        <h3 style="margin-bottom:12px;">📥 Elektron Sertifikatni A4 Formatda va Barcha Fayl Ko'rinishlarida Yuklab Olish:</h3>
         <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
-          <button class="btn btn-gold" onclick="downloadCertificate('pdf')">📕 PDF Formatda Yuklab Olish / Chop etish</button>
-          <button class="btn btn-primary" onclick="downloadCertificate('doc')">📘 Word (.DOC) Formatda Yuklab Olish</button>
-          <button class="btn btn-success" onclick="downloadCertificate('png')">🖼️ Rasm (.PNG Yuqori Sifat) Yuklab Olish</button>
-          <button class="btn btn-secondary" onclick="downloadCertificate('svg')">📐 Vektor (.SVG) Formatda Yuklab Olish</button>
-          <button class="btn btn-secondary" onclick="downloadCertificate('html')">🌐 Web (.HTML) Formatda Yuklab Olish</button>
+          <button class="btn btn-gold" onclick="downloadCertificate('pdf')">📕 A4 PDF Formatda Yuklab Olish / Chop etish</button>
+          <button class="btn btn-success" onclick="downloadCertificate('png')">🖼️ A4 Rasm (.PNG Yuqori Sifat) Yuklab Olish</button>
+          <button class="btn btn-primary" onclick="downloadCertificate('doc')">📘 A4 Word (.DOC) Formatda Yuklab Olish</button>
+          <button class="btn btn-secondary" onclick="downloadCertificate('svg')">📐 A4 Vektor (.SVG) Formatda Yuklab Olish</button>
+          <button class="btn btn-secondary" onclick="downloadCertificate('html')">🌐 Elektron Web (.HTML A4) Yuklab Olish</button>
           <button class="btn btn-secondary" onclick="downloadCertificate('txt')">📝 Matn (.TXT) Formatda Yuklab Olish</button>
           <button class="btn btn-secondary" onclick="downloadCertificate('json')">⚙️ Ma'lumot (.JSON) Formatda Yuklab Olish</button>
         </div>
@@ -467,26 +480,22 @@
         Foydalanuvchi ma'lumotlarini kiritish (Faqat 1 marta so'raladi)
       </h3>
       <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;" data-i18n="regModalDesc">
-        Ma'lumotlaringiz xotirada saqlanadi va qayta kiritish talab etilmaydi. Sertifikat sizning va ota-onangizning nomiga rasmiylashtiriladi.
+        Ma'lumotlaringiz xotirada saqlanadi va qayta kiritish talab etilmaydi. QR-kodli A4 rasmiy sertifikat sizning nomingizga rasmiylashtiriladi.
       </p>
       <form onsubmit="handleSaveRegistration(event)">
         <div class="form-group">
           <label data-i18n="lblLastName">Familiyangiz *</label>
-          <input type="text" id="regLastName" class="form-input" required placeholder="Masalan: Karimov" />
+          <input type="text" id="regLastName" class="form-input" required placeholder="Masalan: Karimov" autocomplete="family-name" />
         </div>
         <div class="form-group">
           <label data-i18n="lblFirstName">Ismingiz *</label>
-          <input type="text" id="regFirstName" class="form-input" required placeholder="Masalan: Jasurbek" />
+          <input type="text" id="regFirstName" class="form-input" required placeholder="Masalan: Jasurbek" autocomplete="given-name" />
         </div>
         <div class="form-group">
           <label data-i18n="lblMiddleName">Otasining ismi (Sharifingiz) *</label>
-          <input type="text" id="regMiddleName" class="form-input" required placeholder="Masalan: Rustam o'g'li" />
+          <input type="text" id="regMiddleName" class="form-input" required placeholder="Masalan: Rustam o'g'li" autocomplete="additional-name" />
         </div>
-        <div class="form-group">
-          <label data-i18n="lblParentsNames">Ota-onangizning F.I.Sh. (Minnatdorchilik sertifikati uchun)</label>
-          <input type="text" id="regParentsNames" class="form-input" placeholder="Masalan: Rustam aka va Dilfuza opa" />
-        </div>
-        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px;">
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px; flex-wrap:wrap;">
           <button type="button" class="btn btn-secondary" onclick="closeRegistrationModal()">Bekor qilish</button>
           <button type="submit" class="btn btn-gold" data-i18n="btnSaveProfile">Saqlash va Davom etish</button>
         </div>

@@ -1,22 +1,50 @@
 /* ==========================================================================
    IMKONIYATLAR KALITI - Multi-Language (UZ / RU / EN) & Real-Time Tickers
    Updates Date, Time, Weather, Geolocation, and Currency Rates every second
+   Cross-OS Safe Storage for iOS (iPhone/iPad), Android, Windows, macOS, Linux
    ========================================================================== */
+
+const SafeStorage = (() => {
+  const mem = {};
+  return {
+    getItem(key) {
+      try {
+        const val = window.localStorage.getItem(key);
+        return val !== null ? val : (key in mem ? mem[key] : null);
+      } catch (_) {
+        return key in mem ? mem[key] : null;
+      }
+    },
+    setItem(key, val) {
+      mem[key] = String(val);
+      try {
+        window.localStorage.setItem(key, String(val));
+      } catch (_) {}
+    },
+    removeItem(key) {
+      delete mem[key];
+      try {
+        window.localStorage.removeItem(key);
+      } catch (_) {}
+    }
+  };
+})();
+window.SafeStorage = SafeStorage;
 
 const I18N = {
   uz: {
     siteName: "IMKONIYATLAR KALITI",
     siteTagline: "24/7 Barcha Operatsion Tizimlarda Ishlovchi Milliy va Xalqaro Ta'lim, Tibbiyot va Telekommunikatsiya Platformasi",
-    status247: "24/7 Barcha OS da faol (Win/Mac/Linux/Android/iOS)",
+    status247: "24/7 Barcha OS da faol (iPhone/iPad/Android/Win/Mac/Linux)",
     navHome: "Bosh menyu",
     navSubjects: "Fanlar va Testlar (30 ta)",
     navMed: "Med Texnikum va Tibbiyot",
     navTelecom: "Telekom va Qurilmalar Chizmasi",
     navRating: "Kunlik / Haftalik / Oylik Reyting",
-    navCertSample: "Sertifikat va Namuna",
+    navCertSample: "A4 Elektron Sertifikat",
     navForum: "Bildirgi va Muhokama",
     heroBadge: "Cheksiz va Takrorlanmas Millionlab Testlar va Nazariyalar Bazasi",
-    heroTitle: "Bilim — kelajak kaliti! A'lo kayfiyatda o'rganing va 5 marta A'lo baho olib Ota-onangiz uchun Minnatdorchilik Sertifikatiga ega bo'ling!",
+    heroTitle: "Bilim — kelajak kaliti! A'lo kayfiyatda o'rganing va 5 marta takroran A'lo baho olib \"IMKONIYATLAR KALITI\" Rasmiy A4 Elektron Sertifikatiga ega bo'ling!",
     heroDesc: "HTML, CSS, JS, Python, Java, C/C++, C#, PHP, Tibbiyot (1-3 kurs Med texnikum va OTM), Telekommunikatsiya (L1-L3 Switch, Router, SFP, Wi-Fi, IP Kamera, NVR, Serverlar chizmalari bilan), Maktab fanlari (1-12 sinf) hamda Nemis (Germaniya ishlash/sertifikat), Ingliz, Rus, Xitoy va Koreys tillari!",
     statVisits: "Saytga kirishlar soni",
     statSolvedTests: "Bajarilgan testlar",
@@ -44,11 +72,10 @@ const I18N = {
     lblRateModule: "Ushbu test va nazariyani 5 yulduzli tizimda baholang:",
     lblAdminContact: "Imkoniyatlar Kaliti Admini bilan bog'lanish:",
     regModalTitle: "Foydalanuvchi ma'lumotlarini kiritish (Faqat 1 marta so'raladi)",
-    regModalDesc: "Ma'lumotlaringiz xotirada saqlanadi va qayta kiritish talab etilmaydi. Sertifikat sizning va ota-onangizning nomiga rasmiylashtiriladi.",
+    regModalDesc: "Ma'lumotlaringiz xotirada saqlanadi va qayta kiritish talab etilmaydi. QR-kodli A4 rasmiy sertifikat sizning nomingizga rasmiylashtiriladi.",
     lblFirstName: "Ismingiz",
     lblLastName: "Familiyangiz",
     lblMiddleName: "Otasining ismi (Sharifingiz)",
-    lblParentsNames: "Ota-onangizning F.I.Sh. (Minnatdorchilik sertifikati uchun)",
     btnSaveProfile: "Saqlash va Davom etish",
     msgCorrect: "Barakalla! To'g'ri javob!",
     msgWrong: "Noto'g'ri javob! To'g'ri javob yashil rangda ko'rsatildi va tanlov qulflandi."
@@ -56,16 +83,16 @@ const I18N = {
   ru: {
     siteName: "КЛЮЧ ВОЗМОЖНОСТЕЙ (IMKONIYATLAR KALITI)",
     siteTagline: "Круглосуточная 24/7 Образовательная, Медицинская и Телекоммуникационная Платформа для всех ОС",
-    status247: "24/7 Активно на всех ОС (Win/Mac/Linux/Android/iOS)",
+    status247: "24/7 Активно на всех ОС (iPhone/iPad/Android/Win/Mac/Linux)",
     navHome: "Главное меню",
     navSubjects: "Предметы и Тесты (по 30)",
     navMed: "Мед. Техникум и Медицина",
     navTelecom: "Телеком и Схемы Оборудования",
     navRating: "Рейтинг (День / Неделя / Месяц)",
-    navCertSample: "Сертификат и Образец",
+    navCertSample: "Электронный Сертификат А4",
     navForum: "Отзывы, Вопросы и Обсуждение",
     heroBadge: "Бесконечная неповторяющаяся база из миллионов тестов и теории",
-    heroTitle: "Знания — ключ к будущему! Учитесь в отличном настроении и получите Сертификат Благодарности Родителям за 5 отличных оценок!",
+    heroTitle: "Знания — ключ к будущему! Учитесь в отличном настроении и получите Именной Сертификат Почета А4 с QR-кодом за 5 отличных оценок!",
     heroDesc: "HTML, CSS, JS, Python, Java, C/C++, C#, PHP, Медицина (1-3 курсы Мед. техникума и ВУЗ), Телекоммуникации (L1-L3 Switch, Router, SFP, Wi-Fi, IP-камеры, NVR, Серверы со схемами), Школьные предметы (1-12 классы) и Немецкий, Английский, Русский, Китайский, Корейский языки!",
     statVisits: "Количество входов на сайт",
     statSolvedTests: "Решено тестов",
@@ -93,11 +120,10 @@ const I18N = {
     lblRateModule: "Оцените этот тест и теорию по 5-звездочной шкале:",
     lblAdminContact: "Связь с Админом Imkoniyatlar Kaliti:",
     regModalTitle: "Регистрация пользователя (Запрашивается только 1 раз)",
-    regModalDesc: "Ваши данные сохраняются автоматически — повторный ввод не потребуется. Сертификат оформляется на ваше имя и в благодарность вашим родителям.",
+    regModalDesc: "Ваши данные сохраняются автоматически — повторный ввод не потребуется. Именной сертификат формата А4 с QR-кодом оформляется на ваше имя.",
     lblFirstName: "Имя",
     lblLastName: "Фамилия",
     lblMiddleName: "Отчество",
-    lblParentsNames: "Ф.И.О. Родителей (для благодарственного сертификата)",
     btnSaveProfile: "Сохранить и Продолжить",
     msgCorrect: "Отлично! Правильный ответ!",
     msgWrong: "Неверно! Правильный ответ выделен зеленым цветом, выбор заблокирован."
@@ -105,16 +131,16 @@ const I18N = {
   en: {
     siteName: "KEY OF OPPORTUNITIES (IMKONIYATLAR KALITI)",
     siteTagline: "24/7 Cross-Platform Educational, Medical & Telecommunications Portal for All Operating Systems",
-    status247: "24/7 Online on All OS (Win/Mac/Linux/Android/iOS)",
+    status247: "24/7 Online on All OS (iPhone/iPad/Android/Win/Mac/Linux)",
     navHome: "Main Menu",
     navSubjects: "Subjects & Tests (30 Qs)",
     navMed: "Medical College & Medicine",
     navTelecom: "Telecom & Hardware Schematics",
     navRating: "Leaderboard (Daily/Weekly/Monthly)",
-    navCertSample: "Certificate & Sample",
+    navCertSample: "A4 Electronic Certificate",
     navForum: "Feedback, Q&A & Discussion",
     heroBadge: "Unlimited Non-Repeating Multi-Million Test & Theory Engine",
-    heroTitle: "Knowledge is the Key of Opportunities! Study in great spirits and earn a Certificate of Gratitude for Your Parents after 5 Excellent scores!",
+    heroTitle: "Knowledge is the Key of Opportunities! Study in great spirits and earn an Official A4 Electronic Certificate with QR Code after 5 Excellent scores!",
     heroDesc: "HTML, CSS, JS, Python, Java, C/C++, C#, PHP, Medical College (Years 1-3 & University), Telecommunications (L1-L3 Switches, Routers, SFP, Wi-Fi, IP Cameras, NVR, Servers with diagrams), Grades 1-12 subjects, plus German (Work/Certs), English, Russian, Chinese & Korean!",
     statVisits: "Total Site Visits",
     statSolvedTests: "Completed Tests",
@@ -142,18 +168,17 @@ const I18N = {
     lblRateModule: "Rate this test and theory (5 Stars):",
     lblAdminContact: "Contact Imkoniyatlar Kaliti Admin:",
     regModalTitle: "User Registration (Asked Only Once)",
-    regModalDesc: "Your details are remembered automatically so you never have to re-enter them. Used for your official Certificate of Gratitude to your parents.",
+    regModalDesc: "Your details are remembered automatically so you never have to re-enter them. Used for your official A4 Electronic Certificate with QR code.",
     lblFirstName: "First Name",
     lblLastName: "Last Name",
     lblMiddleName: "Patronymic / Middle Name",
-    lblParentsNames: "Parents' Full Names (for Gratitude Certificate)",
     btnSaveProfile: "Save & Continue",
     msgCorrect: "Awesome! Correct Answer!",
     msgWrong: "Incorrect! The right answer is highlighted in green and selection is locked."
   }
 };
 
-let currentLang = localStorage.getItem('ik_lang') || 'uz';
+let currentLang = SafeStorage.getItem('ik_lang') || 'uz';
 
 function t(key) {
   return (I18N[currentLang] && I18N[currentLang][key]) || I18N.uz[key] || key;
@@ -162,7 +187,7 @@ function t(key) {
 function setLanguage(lang) {
   if (!I18N[lang]) return;
   currentLang = lang;
-  localStorage.setItem('ik_lang', lang);
+  SafeStorage.setItem('ik_lang', lang);
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
@@ -221,7 +246,7 @@ const CURRENCIES = [
   { code: "BTC", name: "Bitcoin (USD)", flag: "₿", base: 68450.00, isUsd: true }
 ];
 
-let selectedCity = localStorage.getItem('ik_city') || "Toshkent";
+let selectedCity = SafeStorage.getItem('ik_city') || "Toshkent";
 let liveTempDelta = 0;
 
 async function fetchRealWeather(cityKey) {
@@ -304,7 +329,7 @@ function initLiveTopbar() {
     ).join('');
     citySelect.addEventListener('change', (e) => {
       selectedCity = e.target.value;
-      localStorage.setItem('ik_city', selectedCity);
+      SafeStorage.setItem('ik_city', selectedCity);
       fetchRealWeather(selectedCity);
       updateClockAndTickers();
     });
