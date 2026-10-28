@@ -1,22 +1,22 @@
-const CACHE_NAME = 'imkoniyatlar-kaliti-24-7-v3';
+const CACHE_NAME = 'imkoniyatlar-kaliti-24-7-v4';
 const ASSETS = [
   './',
   './index.html',
-  './css/style.css',
-  './js/i18n.js',
-  './js/data-telecom.js',
-  './js/data-subjects.js',
-  './js/data-extra.js',
-  './js/app.js',
+  './css/style.css?v=4',
+  './js/i18n.js?v=4',
+  './js/data-telecom.js?v=4',
+  './js/data-subjects.js?v=4',
+  './js/data-extra.js?v=4',
+  './js/app.js?v=4',
   './assets/logo.png',
   './assets/bg-education.png'
 ];
 
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(() => {})
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
@@ -30,7 +30,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: 'no-cache' })
       .then(res => {
         const copy = res.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy)).catch(() => {});
