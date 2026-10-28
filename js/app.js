@@ -6,6 +6,7 @@
    100% Compatible across iOS (iPhone/iPad), Android, Tablets, Windows, macOS, Linux.
    ========================================================================== */
 
+const ADMIN_NAME = "Usmonov Azimjon Akmaljon o'g'li";
 const ADMIN_EMAIL = "asusadmin21@gmail.com";
 
 // Safe Cross-OS Storage Wrapper (prevents iOS Safari Private / WebView SecurityErrors)
@@ -108,9 +109,9 @@ function updateDashboardStatsUI() {
   if (elUserBadge) {
     if (AppState.user && AppState.user.firstName) {
       elUserBadge.innerHTML = `👤 <strong>${escapeHtml(AppState.user.lastName)} ${escapeHtml(AppState.user.firstName)}</strong>`;
-      elUserBadge.title = `${AppState.user.lastName} ${AppState.user.firstName} ${AppState.user.middleName} (Ma'lumot saqlangan)`;
+      elUserBadge.title = `${AppState.user.lastName} ${AppState.user.firstName} ${AppState.user.middleName} (Sertifikat uchun saqlangan)`;
     } else {
-      elUserBadge.innerHTML = `👤 <span>Ro'yxatdan o'tish (1 marta)</span>`;
+      elUserBadge.innerHTML = `🏆 <span>5x A'lo: ${AppState.stats.excellentCount}/5 (Sertifikat)</span>`;
     }
   }
 }
@@ -187,11 +188,14 @@ function handleSaveRegistration(e) {
 function switchView(viewId) {
   const views = [
     "viewHome",
+    "viewDictionary",
+    "viewPreschool",
     "viewTestEngine",
     "viewTheory",
     "viewTelecom",
     "viewLeaderboard",
     "viewCertificate",
+    "viewPromo",
     "viewForum"
   ];
   views.forEach(id => {
@@ -274,14 +278,14 @@ function renderSubjectsGrid() {
 
 /* ==========================================================================
    30-QUESTION TEST ENGINE (NON-REPEATING, INSTANT LOCK, TIMESTAMPS, DOWNLOAD)
+   IMPORTANT: Test yechishdan oldin ism-familiya so'ralmaydi!
+   5 marta A'lo bahoga yechgandan so'ng sertifikat yuklayotganda so'raladi!
    ========================================================================== */
 function initiateSubjectTest(subjectId) {
   const selectEl = document.getElementById(`levelSelect_${subjectId}`);
   const chosenLevel = selectEl ? selectEl.value : "";
-
-  ensureUserRegistered(() => {
-    start30QuestionTestSession(subjectId, chosenLevel);
-  });
+  // Do NOT ask for First Name / Last Name / Patronymic before starting test!
+  start30QuestionTestSession(subjectId, chosenLevel);
 }
 
 function start30QuestionTestSession(subjectId, level) {
@@ -329,9 +333,9 @@ function renderActiveTestUI() {
   if (!test) return;
 
   document.getElementById("testHeaderTitle").textContent = `${test.subject.icon} ${test.subject.title} — ${test.level}`;
-  document.getElementById("testUserFullname").textContent = AppState.user
+  document.getElementById("testUserFullname").textContent = (AppState.user && AppState.user.firstName)
     ? `${AppState.user.lastName} ${AppState.user.firstName} ${AppState.user.middleName}`
-    : "";
+    : "Bilimdon Ishtirokchi (Ism-familiya 5 marta A'lo yechgach Sertifikat yuklashda so'raladi)";
   document.getElementById("testStartTimeVal").textContent = test.startTimeFormatted;
   document.getElementById("testElapsedTimeVal").textContent = formatDuration(test.elapsedSeconds);
   document.getElementById("testEndTimeVal").textContent = test.endTimeFormatted;
@@ -485,20 +489,40 @@ function finalize30QuestionTest() {
 
   const summaryContent = document.getElementById("testSummaryDetails");
   if (summaryContent) {
+    const rhymeBoxHtml = `
+      <div style="margin:14px 0; padding:16px; border-radius:14px; background:linear-gradient(135deg, rgba(245,158,11,0.18), rgba(16,185,129,0.18)); border:2px dashed #fbbf24; text-align:center;">
+        <div style="font-size:0.85rem; color:#fde68a; font-weight:800; text-transform:uppercase; letter-spacing:1px;">✨ Sertifikat Qoidasi va Qofiyali Chorlov ✨</div>
+        <div style="font-size:1.08rem; font-weight:800; color:#fef08a; line-height:1.65; margin:8px 0;">
+          «Har-xil yo bir yo'nalishda sinab ko'ring o'zingizni,<br/>
+          Ilm nuri bilan charog'on eting bosgan izingizni!<br/>
+          Agar siz har-xil yoki bir yo'nalishda 5 marta "A'lo" bahoga test yechsangiz —<br/>
+          Faxrli Sertifikatga ega bo'lasiz, ulug'lab g'oliblik hissingizni!»
+        </div>
+        <div style="font-size:0.9rem; color:#cbd5e1;">
+          👑 Sayt admini: <strong>${ADMIN_NAME}</strong> | 5 marta "A'lo" bahoga yechgandan so'ng Sertifikat yuklayotganda Ism, Familiya va Otangizning ismi (familiyasi/sharifi) so'raladi!
+        </div>
+      </div>
+    `;
+
     const certUnlockBanner = AppState.stats.excellentCount >= 5
-      ? `<div style="margin-top:16px; padding:16px; border-radius:12px; background:rgba(245,158,11,0.2); border:2px solid #fbbf24;">
-          <h3 style="color:#fbbf24;">🎉 TABRIKLAYMIZ! Siz 5 marta takroran "A'LO" bahoga bajardingiz!</h3>
-          <p style="margin:8px 0;"><strong>"IMKONIYATLAR KALITI"</strong> platformasi va Sayt Admini (<strong>${ADMIN_EMAIL}</strong>) nomidan Sizga ezgu tilaklar bitilgan QR-kod va Shtrix-kodli <strong>Rasmiy A4 Elektron Sertifikat</strong> taqdim etildi!</p>
-          <button class="btn btn-gold" onclick="switchView('viewCertificate'); renderCertificateView(false);">🏆 A4 Elektron Sertifikatni Ko'rish va Yuklab Olish</button>
+      ? `<div style="margin-top:16px; padding:16px; border-radius:12px; background:rgba(245,158,11,0.22); border:2px solid #fbbf24;">
+          <h3 style="color:#fbbf24;">🎉 TABRIKLAYMIZ! Siz 5 marta "A'LO" bahoga test yechdingiz!</h3>
+          <p style="margin:8px 0;"><strong>"IMKONIYATLAR KALITI"</strong> platformasi va Sayt Admini <strong>${ADMIN_NAME}</strong> (<strong>${ADMIN_EMAIL}</strong>) nomidan Sizga QR-kod va Shtrix-kodli <strong>Rasmiy A4 Elektron Sertifikat</strong> taqdim etiladi! Sertifikatni yuklash tugmasini bosing va Ism, Familiya hamda Otangizning ismini kiriting:</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+            <button class="btn btn-gold" onclick="claimAndDownloadCertificateAfter5x('pdf')">🏆 Ism-Familiyani Kiritib A4 Sertifikatni Yuklab Olish (PDF)</button>
+            <button class="btn btn-success" onclick="claimAndDownloadCertificateAfter5x('png')">🖼️ A4 Sertifikatni Rasm (.PNG) Yuklab Olish</button>
+          </div>
         </div>`
-      : `<div style="margin-top:12px; color:#fde68a;">
-          🏅 "IMKONIYATLAR KALITI" Rasmiy A4 Sertifikatini olish ko'rsatkichi: <strong>${AppState.stats.excellentCount} / 5 marta A'lo</strong>
+      : `<div style="margin-top:12px; color:#fde68a; font-size:1.02rem;">
+          🏅 <strong>Har-xil yoki bir yo'nalishda 5 marta "A'lo" bahoga test yechsangiz, Sertifikatga ega bo'lasiz!</strong><br/>
+          Hozirgi "A'lo" baholaringiz: <strong>${AppState.stats.excellentCount} / 5 marta A'lo</strong>
         </div>`;
 
     summaryContent.innerHTML = `
       <h3 style="color:#34d399; font-size:1.35rem;">🏁 Test Yakunlandi! Natija: ${test.correctCount} / 30 (${pct}%) — ${gradeLabel}</h3>
-      <p style="margin-top:6px;">👤 F.I.Sh.: <strong>${escapeHtml(record.fio)}</strong></p>
+      <p style="margin-top:6px;">👤 Ishtirokchi: <strong>${escapeHtml(record.fio)}</strong> | 👑 Sayt admini: <strong>${ADMIN_NAME}</strong></p>
       <p>⏱️ Boshlanish vaqti: <strong>${record.startTime}</strong> | Bajarilgan vaqti: <strong>${record.elapsedTime}</strong> | Tugatgan vaqti: <strong>${record.endTime}</strong></p>
+      ${rhymeBoxHtml}
       ${certUnlockBanner}
     `;
   }
@@ -1164,7 +1188,7 @@ function renderCertificateView(isSampleMode = false) {
       <div class="cert-wishes-list">
         <div>✨ <strong>Ilm va Kasbiy Parvoz:</strong> Kelgusidagi o'qish, ilmiy izlanish va kasbiy faoliyatingizda ulkan zafarlar yor bo'lsin, tanlagan sohangizning jahon miqyosidagi yetuk mutaxassisi bo'lib yetishing!</div>
         <div>✨ <strong>Baxt va Salomatlik:</strong> Sizga mustahkam sog'lik, so'nmas shijoat, oilaviy baxt-saodat, yorug' yuz va barcha ezgu orzu-maqsadlaringiz ro'yobini tilaymiz!</div>
-        <div>✨ <strong>Doimiy Omad:</strong> O'rgangan har bir bilimingiz kelajakda yangi imkoniyatlar kaliti bo'lib xizmat qilsin — <strong>"IMKONIYATLAR KALITI"</strong> ma'muriyati va sayt admini (<strong>${ADMIN_EMAIL}</strong>) sizga doimo yuksak marralarni tilaydi!</div>
+        <div>✨ <strong>Doimiy Omad:</strong> O'rgangan har bir bilimingiz kelajakda yangi imkoniyatlar kaliti bo'lib xizmat qilsin — <strong>"IMKONIYATLAR KALITI"</strong> ma'muriyati va Sayt Admini <strong>${ADMIN_NAME}</strong> (<strong>${ADMIN_EMAIL}</strong>) sizga doimo yuksak marralarni tilaydi!</div>
       </div>
     `;
   }
@@ -1254,7 +1278,7 @@ function buildCertificateSVGString(isSampleMode = false) {
     <text x="561.5" y="424" text-anchor="middle" fill="#fef3c7" font-family="Arial, sans-serif" font-size="15">• Ilm-fan va zamonaviy texnologiyalar cho'qqilarini zabt etib, o'z sohangizning yetuk mutaxassisi bo'ling!</text>
     <text x="561.5" y="452" text-anchor="middle" fill="#fef3c7" font-family="Arial, sans-serif" font-size="15">• Sizga mustahkam sog'lik, tinmas shijoat, oilaviy baxt-saodat va barcha ezgu ishlaringizda ulkan zafarlar tilaymiz!</text>
     <text x="561.5" y="480" text-anchor="middle" fill="#fef3c7" font-family="Arial, sans-serif" font-size="15">• O'rgangan har bir bilimingiz kelajakda yangi imkoniyatlar va yuksak muvaffaqiyat eshiklarini ochsin!</text>
-    <text x="561.5" y="518" text-anchor="middle" fill="#38bdf8" font-family="Arial, sans-serif" font-size="16" font-weight="bold">"IMKONIYATLAR KALITI" Ma'muriyati va Sayt Admini (${ADMIN_EMAIL}) sizga doimo omad tilaydi!</text>
+    <text x="561.5" y="518" text-anchor="middle" fill="#38bdf8" font-family="Arial, sans-serif" font-size="15.5" font-weight="bold">"IMKONIYATLAR KALITI" Sayt Admini: ${ADMIN_NAME} (${ADMIN_EMAIL}) sizga doimo omad tilaydi!</text>
 
     <!-- Left Footer: Certificate ID & Date -->
     <text x="225" y="625" text-anchor="middle" fill="#fbbf24" font-family="Arial, sans-serif" font-size="17" font-weight="bold">Sertifikat ID Raqami:</text>
@@ -1270,14 +1294,34 @@ function buildCertificateSVGString(isSampleMode = false) {
     <text x="561.5" y="747" text-anchor="middle" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">QR / SHTRIX-KOD (ELEKTRON YUKLASH)</text>
 
     <!-- Right Footer: Official Admin Verification -->
-    <text x="900" y="625" text-anchor="middle" fill="#38bdf8" font-family="Arial, sans-serif" font-size="17" font-weight="bold">IMKONIYATLAR KALITI Admini:</text>
-    <text x="900" y="652" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">${ADMIN_EMAIL}</text>
-    <text x="900" y="680" text-anchor="middle" fill="#34d399" font-family="Arial, sans-serif" font-size="15" font-weight="bold">Rasmiy Elektron Tasdiq ✓</text>
-    <text x="900" y="706" text-anchor="middle" fill="#fde68a" font-family="Arial, sans-serif" font-size="14">A4 Format • 24/7 Elektron bazada</text>
+    <text x="900" y="618" text-anchor="middle" fill="#38bdf8" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Sayt Admini va Asoschisi:</text>
+    <text x="900" y="644" text-anchor="middle" fill="#fbbf24" font-family="Arial, sans-serif" font-size="15.5" font-weight="bold">${ADMIN_NAME}</text>
+    <text x="900" y="668" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">${ADMIN_EMAIL}</text>
+    <text x="900" y="694" text-anchor="middle" fill="#34d399" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Rasmiy Elektron Tasdiq ✓</text>
   </svg>`;
 }
 
+function claimAndDownloadCertificateAfter5x(format) {
+  switchView("viewCertificate");
+  ensureUserRegistered(() => {
+    renderCertificateView(false);
+    executeCertificateDownload(format);
+  });
+}
+
 function downloadCertificate(format) {
+  // Ask for First Name, Last Name, Patronymic when downloading certificate!
+  if (!AppState.verifiedCertFromUrl) {
+    ensureUserRegistered(() => {
+      renderCertificateView(false);
+      executeCertificateDownload(format);
+    });
+    return;
+  }
+  executeCertificateDownload(format);
+}
+
+function executeCertificateDownload(format) {
   const data = getCertificateData(false);
   const verifyUrl = getCertificateVerifyUrl(data);
   const svgStr = buildCertificateSVGString(false);
@@ -1603,7 +1647,7 @@ function addForumReply(postIndex, asAdmin) {
     : "Foydalanuvchi";
 
   AppState.forumPosts[postIndex].replies.push({
-    author: asAdmin ? `Imkoniyatlar Kaliti Admini (${ADMIN_EMAIL})` : userAuthor,
+    author: asAdmin ? `Sayt Admini: ${ADMIN_NAME} (${ADMIN_EMAIL})` : userAuthor,
     isAdmin: asAdmin,
     text: input.value.trim(),
     time: new Date().toLocaleTimeString()
@@ -1611,6 +1655,262 @@ function addForumReply(postIndex, asAdmin) {
 
   saveForumPosts();
   renderForumPosts();
+}
+
+/* ==========================================================================
+   INFINITE MULTI-LANGUAGE DICTIONARY EXPLORER (A1 TO C2)
+   Includes Separate Tajik, Turkish, Afghan (Dari/Pashto) & World Languages
+   ========================================================================== */
+let activeDictLang = "tajik";
+let activeDictLevel = "ALL";
+
+function selectDictLang(langId) {
+  activeDictLang = langId;
+  renderDictionaryExplorer();
+}
+
+function selectDictLevel(lvl) {
+  activeDictLevel = lvl;
+  renderDictionaryExplorer();
+}
+
+function loadMoreDictionaryWords(amount = 24) {
+  if (typeof generateMoreDictionaryItems === "function") {
+    generateMoreDictionaryItems(activeDictLang, amount);
+  }
+  renderDictionaryExplorer();
+}
+
+function speakDictText(text, langCode) {
+  try {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      if (langCode) u.lang = langCode;
+      window.speechSynthesis.speak(u);
+    }
+  } catch (_) {}
+}
+
+function renderDictionaryExplorer() {
+  const langTabsEl = document.getElementById("dictLanguagePills");
+  const levelTabsEl = document.getElementById("dictLevelPills");
+  const gridEl = document.getElementById("dictCardsGrid");
+  const infoEl = document.getElementById("dictCountBanner");
+  const searchEl = document.getElementById("dictSearchInput");
+  if (!gridEl || typeof DICTIONARY_LANGUAGES === "undefined") return;
+
+  const langObj = DICTIONARY_LANGUAGES.find(l => l.id === activeDictLang) || DICTIONARY_LANGUAGES[0];
+
+  if (langTabsEl) {
+    langTabsEl.innerHTML = DICTIONARY_LANGUAGES.map(l => `
+      <button class="cat-pill ${l.id === activeDictLang ? "active" : ""}" style="${l.isFeatured ? "border-color:#fbbf24;" : ""}" onclick="selectDictLang('${l.id}')">
+        ${l.flag} ${escapeHtml(l.name)} <span style="font-size:0.7rem; color:#fde68a;">(${escapeHtml(l.badge)})</span>
+      </button>
+    `).join("");
+  }
+
+  const levels = [
+    { id: "ALL", label: "📚 Barchasi (A1 — C2)" },
+    { id: "A1", label: "🟢 A1 — Boshlang'ich" },
+    { id: "A2", label: "🔵 A2 — Tayanch" },
+    { id: "B1", label: "🟡 B1 — O'rta" },
+    { id: "B2", label: "🟠 B2 — Yuqori o'rta" },
+    { id: "C1", label: "🟣 C1 — Ilg'or" },
+    { id: "C2", label: "🏆 C2 — Mukammal (Oxirigacha)" }
+  ];
+
+  if (levelTabsEl) {
+    levelTabsEl.innerHTML = levels.map(lv => `
+      <button class="cat-pill ${lv.id === activeDictLevel ? "active" : ""}" onclick="selectDictLevel('${lv.id}')">
+        ${lv.label}
+      </button>
+    `).join("");
+  }
+
+  const q = searchEl ? searchEl.value.toLowerCase().trim() : "";
+  const allWords = DICTIONARY_SEED[activeDictLang] || [];
+  const filtered = allWords.filter(item => {
+    const matchLv = activeDictLevel === "ALL" || item.level === activeDictLevel;
+    const matchQ = !q ||
+      item.word.toLowerCase().includes(q) ||
+      item.uz.toLowerCase().includes(q) ||
+      item.pron.toLowerCase().includes(q) ||
+      item.cat.toLowerCase().includes(q);
+    return matchLv && matchQ;
+  });
+
+  if (infoEl) {
+    infoEl.innerHTML = `${langObj.flag} <strong>${escapeHtml(langObj.name)}</strong> bo'yicha ko'rsatilmoqda: <strong>${filtered.length}</strong> ta so'z va ibora (Boshlang'ich A1 dan C2 oxirigacha cheksiz yangi so'zlar yuklash mumkin) | 👑 Sayt admini: <strong>${ADMIN_NAME}</strong>`;
+  }
+
+  const testSubjectMap = {
+    tajik: "tojik-tili",
+    turkish: "turk-tili",
+    afghan: "afgon-tili",
+    english: "ingliz-tili",
+    russian: "rus-tili",
+    german: "nemis-tili",
+    chinese: "xitoy-tili",
+    korean: "koreys-tili"
+  };
+  const mappedTestId = testSubjectMap[activeDictLang] || "ingliz-tili";
+
+  gridEl.innerHTML = filtered.map(w => `
+    <div class="subject-card">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span class="subject-tag">Daraja: ${escapeHtml(w.level)}</span>
+          <span style="font-size:0.76rem; color:#38bdf8; font-weight:700;">🏷️ ${escapeHtml(w.cat)}</span>
+        </div>
+        <h3 style="font-size:1.22rem; color:#fbbf24; margin-bottom:6px;">${escapeHtml(w.word)}</h3>
+        <p style="font-size:0.86rem; color:#a5f3fc; margin-bottom:6px;">🗣️ <strong>Talaffuzi:</strong> ${escapeHtml(w.pron)}</p>
+        <p style="font-size:0.96rem; color:#ffffff; font-weight:700; margin-bottom:8px;">🇺🇿 <strong>O'zbekcha ma'nosi:</strong> ${escapeHtml(w.uz)}</p>
+        <p style="font-size:0.83rem; color:var(--text-muted); border-top:1px solid rgba(148,163,184,0.15); padding-top:8px;">💬 ${escapeHtml(w.example)}</p>
+      </div>
+      <div style="display:flex; justify-content:space-between; gap:8px; margin-top:10px;">
+        <button class="btn btn-secondary" onclick="speakDictText('${escapeHtml(w.pron.replace(/'/g, ""))}', '${langObj.speechLang}')">🔊 Talaffuzni eshitish</button>
+        <button class="btn btn-primary" onclick="initiateSubjectTest('${mappedTestId}')">🚀 Shu tildan Test</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+/* ==========================================================================
+   PRESCHOOL POEMS & ELEMENTARY SCHOOL PREPARATION TEXTBOOKS HUB
+   ========================================================================== */
+let activePoemCat = "ALL";
+
+function filterPreschoolPoems(cat) {
+  activePoemCat = cat;
+  renderPreschoolHub();
+}
+
+function loadMorePreschoolPoems(amount = 6) {
+  if (typeof generateMorePreschoolPoems === "function") {
+    generateMorePreschoolPoems(amount);
+  }
+  renderPreschoolHub();
+}
+
+function renderPreschoolHub() {
+  const poemCatsEl = document.getElementById("preschoolPoemCatPills");
+  const poemsGridEl = document.getElementById("preschoolPoemsGrid");
+  const textbooksGridEl = document.getElementById("preschoolTextbooksGrid");
+  if (!poemsGridEl || typeof PRESCHOOL_POEMS === "undefined") return;
+
+  const cats = ["ALL", "Vatan va Ona", "Harflar va Sanash", "Odob va Tozalik", "Fasllar va Tabiat", "Hayvonot va Tabiat"];
+  if (poemCatsEl) {
+    poemCatsEl.innerHTML = cats.map(c => `
+      <button class="cat-pill ${c === activePoemCat ? "active" : ""}" onclick="filterPreschoolPoems('${c.replace(/'/g, "\\'")}')">
+        ${c === "ALL" ? "🌈 Barcha she'rlar (" + PRESCHOOL_POEMS.length + " ta)" : "✨ " + escapeHtml(c)}
+      </button>
+    `).join("");
+  }
+
+  const filteredPoems = PRESCHOOL_POEMS.filter(p => activePoemCat === "ALL" || p.category === activePoemCat);
+  poemsGridEl.innerHTML = filteredPoems.map(p => `
+    <div class="subject-card">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px;">
+          <span class="subject-tag">🧸 ${escapeHtml(p.category)}</span>
+          <span style="font-size:0.75rem; color:#fde68a; font-weight:700;">👶 ${escapeHtml(p.age)}</span>
+        </div>
+        <h3 style="color:#38bdf8; margin-bottom:8px;">🎶 ${escapeHtml(p.title)}</h3>
+        <pre style="white-space:pre-line; font-family:inherit; background:rgba(7,13,25,0.75); border-left:4px solid #fbbf24; padding:12px; border-radius:10px; color:#f8fafc; font-size:0.95rem; line-height:1.6; margin-bottom:10px;">${escapeHtml(p.poem)}</pre>
+        <div style="font-size:0.82rem; color:#34d399; background:rgba(16,185,129,0.1); padding:8px 10px; border-radius:8px;">
+          👩‍🏫 <strong>${escapeHtml(p.teacherTip)}</strong>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; gap:8px; margin-top:10px;">
+        <button class="btn btn-secondary" onclick="speakDictText('${escapeHtml(p.poem.replace(/\n/g, " ").replace(/'/g, ""))}', 'uz-UZ')">🔊 Ovozli eshitish</button>
+        <button class="btn btn-primary" onclick="initiateSubjectTest('bogcha-sherlari')">🚀 Bog'cha Testi</button>
+      </div>
+    </div>
+  `).join("");
+
+  if (textbooksGridEl && typeof PRESCHOOL_TEXTBOOKS !== "undefined") {
+    textbooksGridEl.innerHTML = PRESCHOOL_TEXTBOOKS.map(tb => `
+      <div class="subject-card">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:1.7rem;">${tb.icon}</span>
+            <span class="subject-tag">${escapeHtml(tb.levelBadge)}</span>
+          </div>
+          <h3 style="color:#fbbf24; font-size:1.12rem; margin-bottom:8px;">${escapeHtml(tb.title)}</h3>
+          <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:10px;">${escapeHtml(tb.summary)}</p>
+          <ul style="padding-left:18px; font-size:0.86rem; color:#e2e8f0; margin-bottom:12px; line-height:1.55;">
+            ${tb.lessons.map(l => `<li style="margin-bottom:4px;">${escapeHtml(l)}</li>`).join("")}
+          </ul>
+          <div style="background:rgba(59,130,246,0.15); border:1px solid #38bdf8; padding:10px 12px; border-radius:10px; font-size:0.85rem; color:#bae6fd;">
+            🎯 <strong>${escapeHtml(tb.interactiveTask)}</strong>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:12px;">
+          <button class="btn btn-gold" style="flex:1;" onclick="initiateSubjectTest('${tb.subjectTestId}')">🚀 Shu darslikdan 30 talik Testni Boshlash</button>
+        </div>
+      </div>
+    `).join("");
+  }
+}
+
+/* ==========================================================================
+   SOCIAL MEDIA PROMOTION & ADVERTISING HUB ("IMKONIYATLAR KALITI")
+   ========================================================================== */
+function shareSiteToSocial(platform) {
+  let siteUrl = "https://imkoniyatlar-kaliti-1.vercel.app/";
+  try {
+    if (window.location && window.location.protocol && window.location.protocol.startsWith("http")) {
+      siteUrl = window.location.origin + window.location.pathname;
+    }
+  } catch (_) {}
+
+  const promoText =
+    `🔑 «IMKONIYATLAR KALITI» — Barcha tillar cheksiz lug'ati (Tojik, Turk, Afg'on, Ingliz, Rus, Nemis, Arab, Koreys, Xitoy), Bog'cha bolalari va tarbiyachilar uchun tugamaydigan she'rlar, Boshlang'ich maktabga tayyorgarlik darsliklari, IT, Tibbiyot, Telekommunikatsiya va 5x A'lo baholi Rasmiy A4 Sertifikat platformasi!\n` +
+    `👑 Sayt admini: ${ADMIN_NAME}\n` +
+    `🌐 Barcha operatsion tizimlarda (iPhone, Android, Windows, macOS, Linux) 24/7 bepul ishlaydi:`;
+
+  const encUrl = encodeURIComponent(siteUrl);
+  const encText = encodeURIComponent(promoText);
+
+  if (platform === "telegram") {
+    window.open(`https://t.me/share/url?url=${encUrl}&text=${encText}`, "_blank");
+  } else if (platform === "whatsapp") {
+    window.open(`https://api.whatsapp.com/send?text=${encText}%20${encUrl}`, "_blank");
+  } else if (platform === "facebook") {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encUrl}`, "_blank");
+  } else if (platform === "twitter") {
+    window.open(`https://twitter.com/intent/tweet?text=${encText}&url=${encUrl}`, "_blank");
+  } else if (platform === "linkedin") {
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encUrl}`, "_blank");
+  } else {
+    copyPromoMaterial();
+  }
+}
+
+function copyPromoMaterial() {
+  let siteUrl = "https://imkoniyatlar-kaliti-1.vercel.app/";
+  try {
+    if (window.location && window.location.protocol && window.location.protocol.startsWith("http")) {
+      siteUrl = window.location.origin + window.location.pathname;
+    }
+  } catch (_) {}
+
+  const fullAd =
+    `🔑 «IMKONIYATLAR KALITI» — XALQARO TA'LIM, LUG'AT VA SERTIFIKAT PLATFORMASI!\n\n` +
+    `🌍 Barcha tillarga boshlang'ichdan (A1) to oxirigacha (C2) CHEKSIZ LUG'AT: Tojik, Turk, Afg'on (Dari/Pushtu), Ingliz, Rus, Nemis, Arab, Koreys, Xitoy tillari!\n` +
+    `🧸 Bog'cha bolalariga o'rgatish uchun tarbiyachi-o'qituvchilarga TUGAMAYDIGAN SHE'RLAR va Boshlang'ich maktabga tayyorgarlik eng zo'r DARSLIKLARI!\n` +
+    `🏆 Har-xil yoki bir yo'nalishda 5 marta "A'lo" bahoga test yeching va QR-kodli Rasmiy A4 SERTIFIKATGA ega bo'ling!\n` +
+    `👑 Sayt admini: ${ADMIN_NAME} (${ADMIN_EMAIL})\n` +
+    `🔗 Saytga kirish: ${siteUrl}`;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(fullAd).catch(() => {});
+  }
+  const statusEl = document.getElementById("promoCopyStatus");
+  if (statusEl) {
+    statusEl.textContent = "✅ Tayyor reklama matni va sayt havolasi nusxalandi! Endi Instagram, Telegram, Facebook, YouTube va barcha guruhlarga joylashingiz mumkin!";
+  }
 }
 
 /* ==========================================================================
@@ -1661,6 +1961,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setLanguage(currentLang);
   updateDashboardStatsUI();
   renderSubjectsGrid();
+  renderDictionaryExplorer();
+  renderPreschoolHub();
   renderTelecomEncyclopedia();
   renderLeaderboard("all");
   renderCertificateView(false);

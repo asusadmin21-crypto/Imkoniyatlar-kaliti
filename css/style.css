@@ -1575,3 +1575,51 @@ a {
     grid-template-columns: 1fr auto 1fr !important;
   }
 }
+
+/* ==========================================================================
+   WINDOW ADMIN SHOWCASE, POETIC RHYME BANNER & OBSERVER WIDGETS
+   ========================================================================== */
+.window-admin-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 58, 138, 0.65));
+  border: 1.5px solid rgba(251, 191, 36, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 18px rgba(245, 158, 11, 0.16);
+}
+
+.admin-gold-name {
+  color: #fbbf24;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.45);
+}
+
+.poetic-rhyme-banner {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.92));
+  border: 2px solid rgba(251, 191, 36, 0.65);
+  border-radius: 18px;
+  padding: 20px 24px;
+  margin-bottom: 22px;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), 0 0 24px rgba(245, 158, 11, 0.2);
+}
+
+.poetic-rhyme-lines {
+  font-size: clamp(0.95rem, 1.8vw, 1.12rem);
+  font-weight: 800;
+  line-height: 1.75;
+  color: #fef3c7;
+  margin: 10px auto;
+  max-width: 780px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px dashed rgba(251, 191, 36, 0.45);
+}
+

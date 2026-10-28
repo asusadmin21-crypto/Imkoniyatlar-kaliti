@@ -581,6 +581,113 @@ const SUBJECTS_CATALOG = [
       }
     ]
   },
+  {
+    id: "tojik-tili",
+    category: "langs",
+    icon: "🇹🇯",
+    title: "Tojik Tili (Тоҷикӣ — Boshlang'ich A1 dan C2 Oxirigacha Cheksiz Lug'at va Grammatika)",
+    tag: "Alohida Qo'shilgan ★ A1–C2",
+    levels: [
+      "A1 — Boshlang'ich (Alifbo, Salomlashish, Oila va Kundalik lug'at)",
+      "A2 — Tayanch (Maktab, Bozor, Sayohat va Oddiy suhbatlar)",
+      "B1 — O'rta (Grammatika, Izofat bog'lanishi va Adabiy til)",
+      "B2 — Yuqori o'rta (Tibbiyot, Texnika va Ishbilarmonlik muloqoti)",
+      "C1–C2 — Mukammal (Mumtoz va zamonaviy adabiyot, Ilmiy va Rasmiy uslub)"
+    ],
+    desc: "Tojik alifbosi (а, б, в, ғ, ӣ, қ, ӯ, ҳ, ҷ), izofat (-и) qoidasi, fe'l zamonlari, boshlang'ichdan oxirigacha cheksiz lug'at va muloqot testlari.",
+    theory: [
+      {
+        title: "Tojik Tili Alifbosi, Maxsus Harflar (Ғ, Ӣ, Қ, Ӯ, Ҳ, Ҷ) va Izofat (-и) Bog'lanishi",
+        body: "Tojik tilida 35 ta harf mavjud bo'lib, maxsus 6 ta harf: Ғ (g'), Ӣ (uzun i), Қ (q), Ӯ (o'), Ҳ (yumshoq h), Ҷ (j). Ot va sifat/aniqlovchi bog'langanda 'izofat' (-и) qo'shimchasi qo'shiladi: Китоби нав (Yangi kitob), Ватани азиз (Aziz Vatan), Калиди имкониятҳо (Imkoniyatlar kaliti)."
+      }
+    ]
+  },
+  {
+    id: "turk-tili",
+    category: "langs",
+    icon: "🇹🇷",
+    title: "Turk Tili (Türkçe — Boshlang'ich A1 dan C2 Oxirigacha Lug'at va TÖMER Sertifikat)",
+    tag: "Alohida Qo'shilgan ★ TÖMER A1–C2",
+    levels: [
+      "A1 — Boshlang'ich (Alifbo, Unli uyg'unligi, Salomlashish va Kundalik so'zlar)",
+      "A2 — Elementar (Zamonlar: Şimdiki/Geçmiş/Gelecek Zaman va Suhbat)",
+      "B1 — O'rta (TÖMER B1, Turkiyada o'qish va ishlash muloqoti)",
+      "B2 — Yuqori o'rta (Akademik va Tibbiy/Texnik Turk tili)",
+      "C1–C2 — Mukammal (TÖMER C1 Diplom, Biznes va Ilmiy uslub)"
+    ],
+    desc: "Turk alifbosi (29 harf: ç, ğ, ı, и, ö, ş, ü), unlilar garmoniyasi (Büyük/Küçük Ünlü Uyumu), kelishiklar, TÖMER testlari va cheksiz lug'at.",
+    theory: [
+      {
+        title: "Turk Tilida Unlilar Uyg'unligi (Ünlü Uyumu) va Zamon Qo'shimchalari",
+        body: "Turk tilida 8 ta unli tovush ikki guruhga bo'linadi: Qalin (Kalın: a, ı, o, u) va Ingichka (İnce: e, i, ö, ü). Hozirgi davom zamon '-iyor' qo'shimchasi bilan yasaladi: Geliyorum (Kelyapman), Okuyorsun (O'qiyapsan), Öğreniyoruz (O'rganyapmiz)."
+      }
+    ]
+  },
+  {
+    id: "afgon-tili",
+    category: "langs",
+    icon: "🇦🇫",
+    title: "Afg'on Tili (Dari va Pushtu — دری / پښتو — Boshlang'ich A1 dan C2 Oxirigacha)",
+    tag: "Alohida Qo'shilgan ★ Dari & Pushtu",
+    levels: [
+      "A1 — Boshlang'ich (Yozuv, Salomlashish, Raqamlar va Oila lug'ati)",
+      "A2 — Tayanch (Kundalik muloqot, Savdo-sotiq va Sayohat iboralari)",
+      "B1 — O'rta (Dari va Pushtu grammatikasi, Fe'l zamonlari)",
+      "B2 — Yuqori o'rta (Rasmiy, Tibbiy va Texnik muloqot)",
+      "C1–C2 — Mukammal (Tarjimonlik, Diplomatiya va Adabiy meros)"
+    ],
+    desc: "Afg'onistonning ikki rasmiy tili — Dari (دری) va Pushtu (پښتو) bo'yicha boshlang'ichdan mukammal darajagacha lug'at, talaffuz, grammatika va testlar.",
+    theory: [
+      {
+        title: "Afg'on Tilining Ikki Qanoti: Dari (دری) va Pushtu (پښتو) Asoslari",
+        body: "Dari va Pushtu tillari o'ngdan chapga qarab yoziladi. Salomlashish va xushmuomalalik: سلام علیکم (Salom alaykum), ستړی مشی (Stary mashay — Charchamang / Hormang), تشکر / مننه (Tashakor / Manana — Rahmat), ښوونځی / مکتب (Shovunzay / Maktab — Maktab)."
+      }
+    ]
+  },
+
+  // ===================== 6. BOG'CHA VA BOSHLANG'ICH MAKTABGA TAYYORGARLIK =====================
+  {
+    id: "bogcha-sherlari",
+    category: "preschool",
+    icon: "🧸",
+    title: "Bog'cha Bolalari va Tarbiyachi-O'qituvchilar Uchun Tugamaydigan She'rlar va Metodika",
+    tag: "Bog'cha (3–7 yosh) & Tarbiyachilar",
+    levels: [
+      "Kichik guruh (3–4 yosh: Oddiy she'rlar, Ovutchoqlar va Barmoq o'yinlari)",
+      "O'rta guruh (4–5 yosh: Vatan, Ona, Tozalik va Hayvonot haqida she'rlar)",
+      "Katta guruh (5–6 yosh: Fasllar, Harflar, Sanash va Odob she'rlari)",
+      "Maktabga tayyorlov guruhi (6–7 yosh: Bayram ertaliklari va Ifodali nutq)",
+      "Tarbiyachi-o'qituvchilar uchun Metodik Qo'llanma va Pedagogik Testlar"
+    ],
+    desc: "Bog'cha tarbiyachilari bolajonlarga o'rgatishi uchun Vatan, Ona, Alifbe, Sanash, Fasllar, Tozalik va Odob haqida tugamaydigan she'rlar va metodik testlar.",
+    theory: [
+      {
+        title: "Maktabgacha Ta'limda She'r O'rgatish Metodikasi va Nutq O'stirish",
+        body: "Bog'cha yoshidagi bolalarga she'r yodlatishda ko'rgazmalilik (rasm, o'yinchoq), harakatli barmoq gimnastikasi va rolga kirib ifodali o'qish usullari qo'llaniladi. Bu bolaning xotirasini, diksiyasini va so'z boyligini jadal rivojlantiradi."
+      }
+    ]
+  },
+  {
+    id: "maktabga-tayyorgarlik",
+    category: "preschool",
+    icon: "🎒",
+    title: "Boshlang'ich Maktabga Tayyorgarlik Darsliklari (Alifbe, Sanash, Mantiq, Atrof-olam)",
+    tag: "5–7 yosh & 1-Sinfga Tayyorlov",
+    levels: [
+      "1-Darslik: Alifbe, Tovushlar va Bo'g'inlab O'qish Savodxonligi",
+      "2-Darslik: Qiziqarli Matematika, 1–100 Sanash va Geometrik Shakllar",
+      "3-Darslik: Mantiqiy Fikrlash, Topishmoqlar va Diqqat Mashqlari",
+      "4-Darslik: Atrof-Olam, Tabiatshunoslik, Fasllar va Svetofor Qoidalari",
+      "5-Darslik: Husnixat, Mayda Motorika va Xorijiy Tillarda Ilk So'zlar"
+    ],
+    desc: "Bolalarni 1-sinfga va boshlang'ich maktabga a'lo darajada tayyorlovchi eng zo'r kompleks darsliklar, mantiqiy mashqlar va 30 talik sinov testlari.",
+    theory: [
+      {
+        title: "Bolani Boshlang'ich Maktabga (1-Sinfga) Mukammal Tayyorlash Mezonlari",
+        body: "Maktabga chiqayotgan 6–7 yoshli bola: 1) Unli va undosh tovushlarni farqlab, so'zlarni bo'g'inlab o'qiy olishi; 2) 1 dan 20 gacha qo'shish va ayirish, 100 gacha sanashni bilishi; 3) O'z ismi, familiyasi, Vatanimiz va tabiat hodisalarini tushuntira olishi lozim."
+      }
+    ]
+  },
 
   // ===================== 5. TELEKOMMUNIKATSIYA VA TARMOQLAR =====================
   {
@@ -934,6 +1041,26 @@ function generateParametricQuestion(subject, level, variantIndex, daySeed) {
         { k: "ko_hangul", q: "Koreys yozuvi 'Hangul' (한글) 1443-yilda qaysi qirol boshchiligida olimlar tomonidan xalq savodxonligi uchun yaratilgan?", a: "Qirol Sejong (세종대왕 — Sejong Daewang)", w: ["Imperator Qin Shi Huang", "General Li Sun Sin", "Qirol Kojong"], e: "Buyuk Qirol Sejong 1443-yilda Hangul fonetik alifbosini yaratib, 1446-yilda e'lon qilgan." },
         { k: "ko_polite", q: "Koreys tilida rasmiy-hurmat uslubida (하십시오체) darak gaplar fe'l o'zagiga qaysi qo'shimchani qo'shish orqali yasaladi?", a: "-습니다 (undoshdan keyin) / -ㅂ니다 (unlidan keyin)", w: ["-고 싶다", "-지 마세요", "-기 때문에"], e: "Rasmiy uslubda undosh bilan tugagan o'zakka -습니다 (masalan, 먹습니다), unliga -ㅂ니다 (갑니다) qo'shiladi." },
         { k: "ko_hospital", q: "EPS-TOPIK va TOPIK lug'atida 'Shifoxona', 'Dorixona' va 'Maktab' so'zlari koreys tilida qanday ataladi?", a: "병원 (Byeong-won — Shifoxona), 약국 (Yak-guk — Dorixona), 학교 (Hak-gyo — Maktab)", w: ["공항, 은행, 식당", "도서관, 기숙사, 공장", "우체국, 경찰서, 시장"], e: "병원 — shifoxona, 약국 — dorixona, 학교 — maktab." }
+      ],
+      "tojik-tili": [
+        { k: "tj_salom", q: "Tojik tilida 'Xayrli tong' va 'Katta rahmat' iboralari qanday yoziladi?", a: "Субҳи бахайр / Ташаккури зиёд (Раҳмати калон)", w: ["Шаби хуш / Бубахшед", "Марҳамат / Хайр", "Рӯзи нав / Саломат"], e: "Субҳи бахайр — Xayrli tong, Ташаккури зиёд / Раҳмати калон — Katta rahmat." },
+        { k: "tj_izofat", q: "Tojik tili grammatikasida ot va sifatni bog'lovchi 'izofat' qo'shimchasi qaysi va 'Imkoniyatlar kaliti' qanday tarjima qilinadi?", a: "-и qo'shimchasi: Калиди имкониятҳо (Kalidi imkoniyatho)", w: ["-ҳо qo'shimchasi: Китобҳо", "-ро qo'shimchasi: Мактабро", "-он qo'shimchasi: Дӯстон"], e: "Tojik tilida izofat (-и) aniqlanmish so'z oxiriga qo'shiladi: Калиди имкониятҳо — Imkoniyatlar kaliti." },
+        { k: "tj_family", q: "Tojik tilida 'Ota, Ona, Aka-uka va Opa-singil' so'zlari qaysi qatorda to'g'ri berilgan?", a: "Падар (Ota), Модар (Ona), Бародар (Aka-uka), Хоҳар (Opa-singil)", w: ["Омӯзгор, Хонанда, Табиб, Муҳандис", "Шаҳр, Деҳа, Кӯча, Хона", "Баҳор, Тобистон, Тирамоҳ, Зимистон"], e: "Падар — ota, Модар — ona, Бародар — aka-uka, Хоҳар — opa-singil." },
+        { k: "tj_school", q: "Tojik tilida 'Bolalar bog'chasi, Maktab va O'qituvchi' so'zlari qanday ataladi?", a: "Кӯдакистон (Bog'cha), Мактаб (Maktab), Омӯзгор / Муаллим (O'qituvchi)", w: ["Бозор, Мағоза, Харидор", "Фурудгоҳ, Истгоҳ, Қатора", "Варзишгоҳ, Бозӣ, Тӯб"], e: "Кӯдакистон — bolalar bog'chasi, Мактаб — maktab, Омӯзгор — o'qituvchi." },
+        { k: "tj_letters", q: "Tojik kirill alifbosidagi o'ziga xos 6 ta harf qaysi qatorda to'liq ko'rsatilgan?", a: "Ғ ғ, Ӣ ӣ, Қ қ, Ӯ ӯ, Ҳ ҳ, Ҷ ҷ", w: ["Ә ә, Ө ө, Ү ү, Ң ң", "Љ љ, Њ њ, Џ џ", "І і, Ї ї, Є є"], e: "Tojik alifbosida 35 ta harf bo'lib, maxsus 6 tasi: Ғ, Ӣ, Қ, Ӯ, Ҳ, Ҷ hisoblanadi." }
+      ],
+      "turk-tili": [
+        { k: "tr_greet", q: "Turk tilida 'Xayrli tong', 'Katta rahmat' va 'Xush kelibsiz' iboralari qanday aytiladi?", a: "Günaydın / Çok teşekkür ederim / Hoş geldiniz", w: ["İyi geceler / Güle güle / Afedersiniz", "Lütfen / Tamam / Hayır", "Yarın / Bugün / Dün"], e: "Günaydın — Xayrli tong, Çok teşekkür ederim — Katta rahmat, Hoş geldiniz — Xush kelibsiz." },
+        { k: "tr_school", q: "Turk tilida 'Bolalar bog'chasi', 'Boshlang'ich maktab' va 'O'qituvchi' so'zlarining tarjimasini toping:", a: "Anaokulu (Bog'cha), İlkokul (Boshlang'ich maktab), Öğretmen (O'qituvchi)", w: ["Hastane, Eczane, Doktor", "Havaalanı, İstasyon, Kaptan", "Kütüphane, Müze, Ressam"], e: "Anaokulu — bog'cha, İlkokul — boshlang'ich maktab, Öğretmen — o'qituvchi, Öğrenci — o'quvchi." },
+        { k: "tr_key", q: "Turk tilida 'Imkoniyatlar kaliti' va 'Muvaffaqiyat sertifikati' iboralari qanday yoziladi?", a: "Fırsatların Anahtarı va Başarı Sertifikası", w: ["Demir Kapı va Kitap Sayfası", "Büyük Şehir va Güzel Hava", "Yeni Araba va Uzun Yol"], e: "Fırsat — imkoniyat, Anahtar — kalit (Fırsatların Anahtarı — Imkoniyatlar kaliti)." },
+        { k: "tr_present", q: "Turk tilida hozirgi davom zamon (Şimdiki Zaman) fe'l o'zagiga qaysi qo'shimcha yordamida yasaladi?", a: "-iyor / -ıyor / -uyor / -üyor (masalan: Okuyorum — O'qiyapman)", w: ["-di / -dı / -du / -dü", "-ecek / -acak", "-meli / -malı"], e: "Şimdiki Zaman unli uyg'unligiga ko'ra -(i)yor qo'shimchasi bilan yasaladi." },
+        { k: "tr_family", q: "Turk tilida 'Anne, Baba, Ağabey (Abi), Abla' so'zlari kimlarni anglatadi?", a: "Ona, Ota, Katta aka, Katta opa", w: ["Bobo, Buvi, Amaki, Tog'a", "Qo'shni, Do'st, Ustoz, Shogird", "Shifokor, Muhandis, Yozuvchi, Sportchi"], e: "Anne — ona, Baba — ota, Ağabey (Abi) — aka, Abla — opa." }
+      ],
+      "afgon-tili": [
+        { k: "af_greet", q: "Afg'on (Dari va Pushtu) tillarida 'Salom, charchamang' va 'Katta rahmat' iboralari qanday aytiladi?", a: "سلام علیکم / ستړی مشی (Stary mashay) va تشکر / مننه (Tashakor / Manana)", w: ["خداحافظ / سبا پورې", "ببخشید / وبخښئ", "نه / هو"], e: "Pushtu tilida 'ستړی مشی' (Stary mashay — Charchamang) va 'مننه' (Manana — Rahmat), Dari tilida 'تشکر' (Tashakor) deyiladi." },
+        { k: "af_school", q: "Dari va Pushtu tillarida 'Maktab', 'O'qituvchi' va 'Kitob' so'zlari qanday yoziladi?", a: "مکتب / ښوونځی (Maktab / Shovunzay), معلم / ښوونکی (Muallim / Shovunkay), کتاب (Kitob)", w: ["بازار، دکان، پیسې", "سیند، غر، اسمان", "موټر، الوتکه، اورګاډی"], e: "Pushtu tilida ښوونځی (Shovunzay) — maktab, ښوونکی (Shovunkay) — o'qituvchi; Dari tilida مکتب va معلم." },
+        { k: "af_family", q: "Pushtu va Dari tillarida 'Ona va Ota' so'zlari qanday ifodalanadi?", a: "مور او پلار (Mor aw Plar) / مادر و پدر (Modar va Padar)", w: ["ورور او خور (Aka va Opa)", "ملګری او ګاونډی (Do'st va Qo'shni)", "طبیب او ناروغ (Shifokor va Bemor)"], e: "Pushtu tilida مور (Mor — Ona) va پلار (Plar — Ota); Dari tilida مادر (Modar) va پدر (Padar)." },
+        { k: "af_key", q: "Dari va Pushtu tillarida 'Imkoniyatlar kaliti' va 'Bilim — nurdir' iboralari qanday yoziladi?", a: "کلید امکانات / د فرصتونو کیلي va علم نور است / پوهنه رڼا ده", w: ["دروازه بزرگ va خانه نو", "آب صاف va نان گرم", "سفر دور va راه دراز"], e: "کلید امکانات / د فرصتونو کیلي — Imkoniyatlar kaliti; پوهنه رڼا ده — Bilim nurdir." }
       ]
     };
     const list = langItems[subId];
@@ -947,6 +1074,40 @@ function generateParametricQuestion(subject, level, variantIndex, daySeed) {
         explanation: it.e
       };
     }
+  }
+
+  // 6B. BOG'CHA SHE'RLARI VA BOSHLANG'ICH MAKTABGA TAYYORGARLIK GENERATORI
+  if (subId === "bogcha-sherlari" || subId === "maktabga-tayyorgarlik" || subject.category === "preschool") {
+    const preschoolBank = [
+      { k: "pre_vowels", q: "O'zbek alifbosida nechta unli tovush va harf bor?", a: "6 ta unli harf (A, O, I, E, U, O')", w: ["4 ta unli", "10 ta unli", "24 ta unli"], e: "O'zbek tilida A, O, I, E, U, O' — jami 6 ta unli tovush mavjud." },
+      { k: "pre_syllable", q: "«MAKTAB» va «VATAN» so'zlarida nechta bo'g'in bor?", a: "Ikkalasida ham 2 tadan bo'g'in bor: MAK-TAB va VA-TAN", w: ["1 tadan bo'g'in", "4 tadan bo'g'in", "5 tadan bo'g'in"], e: "So'zda nechta unli tovush bo'lsa, shuncha bo'g'in bo'ladi: MAK-TAB (2 ta a unlisi -> 2 bo'g'in)." },
+      { k: "pre_svetofor", q: "Yo'l harakati qoidasiga ko'ra svetoforning qizil, sariq va yashil chiroqlari nimani bildiradi?", a: "Qizil — to'xta, Sariq — tayyorlan, Yashil — yo'ldan o't", w: ["Qizil — yugur, Yashil — to'xta", "Sariq — uxlash vaqti", "Barcha chiroqlarda yugurib o'tiladi"], e: "Bolalarga bog'chadan svetoforning 3 chirog'i qoidasi she'r orqali o'rgatiladi." },
+      { k: "pre_seasons", q: "Bir yilda nechta fasl va nechta oy bor?", a: "4 ta fasl (Bahor, Yoz, Kuz, Qish) va 12 ta oy", w: ["2 ta fasl va 6 ta oy", "5 ta fasl va 10 ta oy", "7 ta fasl va 30 ta oy"], e: "Yil 4 fasl va 12 oydan (har bir faslda 3 tadan oy) iborat." },
+      { k: "pre_week", q: "Bir haftada nechta kun bor va haftaning birinchi kuni qaysi?", a: "7 kun bor, Dushanba — haftaning birinchi kuni", w: ["5 kun bor, Juma birinchi kun", "10 kun bor", "3 kun bor"], e: "Dushanba, Seshanba, Chorshanba, Payshanba, Juma, Shanba, Yakshanba — jami 7 kun." },
+      { k: "pre_riddle_carrot", q: "Bolalar topishmog'ining javobini toping: «Yer tagida oltin qoziq, quyonchaga shirin oziq» — bu nima?", a: "Sabzi", w: ["Olma", "Tarvuz", "Yong'oq"], e: "Sabzi yer ostida o'sadi va quyonlarning eng sevimli ozuqasidir." },
+      { k: "pre_riddle_book", q: "Topishmoqni toping: «Til-og'zi yo'q, ammo barcha ilmni o'rgatar, varaq-varaq do'stimiz» — bu nima?", a: "Kitob (Alifbe)", w: ["Koptok", "Soat", "Soyabon"], e: "Kitob — bilim bulog'i, bolajonning eng yaqin do'stidir." },
+      { k: "pre_hygiene", q: "Bog'cha bolalariga gigiyena she'rlarida ovqatlanishdan oldin va ko'chadan kelganda eng avvalo nima qilish o'rgatiladi?", a: "Qo'llarni sovunlab toza yuvish", w: ["Yuvinmasdan dasturxonga o'tirish", "Sovuq suv ichish", "Kiyimni yechmasdan uxlash"], e: "Qo'lni sovunlab yuvish mikroblardan himoya qiluvchi eng birinchi salomatlik qoidasidir." }
+    ];
+    if (variantIndex < preschoolBank.length) {
+      const it = preschoolBank[variantIndex];
+      return {
+        conceptId: `preschool_${it.k}_${level}`,
+        question: `[${level}] ${it.q}`,
+        correct: it.a,
+        wrongs: it.w,
+        explanation: it.e
+      };
+    }
+    const n1 = 3 + (variantIndex % 15);
+    const n2 = 2 + ((variantIndex * 3) % 12);
+    const sum = n1 + n2;
+    return {
+      conceptId: `preschool_math_${n1}_${n2}_${variantIndex}`,
+      question: `[${level}] Bog'cha va 1-sinf qiziqarli matematikasi: Bog'chada bolajonlar ${n1} ta olma va ${n2} ta nok sanashdi. Jami nechta meva bo'ldi (${n1} + ${n2} = ?)?`,
+      correct: `${sum} ta meva (${n1} + ${n2} = ${sum})`,
+      wrongs: [`${sum + 2} ta meva`, `${Math.max(1, sum - 2)} ta meva`, `${sum + 5} ta meva`],
+      explanation: `Qo'shish amali: ${n1} ga ${n2} ni qo'shsak, jami ${sum} hosil bo'ladi.`
+    };
   }
 
   // 7. GENERAL MULTI-SUBJECT PARAMETRIC & CONCEPT COMBINATORIAL ENGINE

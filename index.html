@@ -9,8 +9,44 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="#070d19" />
   <meta name="format-detection" content="telephone=no" />
-  <title>IMKONIYATLAR KALITI — 24/7 Xalqaro Ta'lim, Tibbiyot, Dasturlash va Telekommunikatsiya Platformasi</title>
-  <meta name="description" content="Barcha operatsion tizimlarda (iPhone, iPad, Android, Planshet, Windows, macOS, Linux) 24/7 ishlaydigan HTML, CSS, JS, Python, Java, C++, C#, PHP, Med Texnikum (1-3 kurs), Tibbiyot, 1-12 sinf Maktab fanlari, Xorijiy tillar va Telekommunikatsiya platformasi." />
+
+  <title>IMKONIYATLAR KALITI — Sayt Admini: Usmonov Azimjon Akmaljon o'g'li | Cheksiz Lug'at, Bog'cha She'rlari, Darsliklar va Sertifikat</title>
+  <meta name="description" content="Imkoniyatlar kaliti — Sayt admini Usmonov Azimjon Akmaljon o'g'li. Barcha tillarga boshlang'ichdan (A1) oxirigacha (C2) cheksiz lug'at (Tojik, Turk, Afg'on, Ingliz, Rus, Nemis, Koreys, Xitoy), bog'cha bolalariga tugamaydigan she'rlar, boshlang'ich maktabga tayyorgarlik darsliklari, IT, Tibbiyot, Telekom va 5x A'lo A4 Sertifikat!" />
+  <meta name="keywords" content="Imkoniyatlar kaliti, Usmonov Azimjon Akmaljon o'g'li, cheksiz lug'at, tojik tili, turk tili, afg'on tili, bog'cha she'rlari, maktabga tayyorgarlik darsliklari, test, sertifikat" />
+  <meta name="author" content="Usmonov Azimjon Akmaljon o'g'li" />
+
+  <!-- Open Graph / Telegram / WhatsApp / Instagram / Facebook — "Imkoniyatlar kaliti" deganda chiroyli glavni rasm bilan chiqishi uchun -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IMKONIYATLAR KALITI" />
+  <meta property="og:title" content="🔑 IMKONIYATLAR KALITI — Xalqaro Ta'lim, Cheksiz Lug'at, Bog'cha va Maktab Darsliklari Platformasi" />
+  <meta property="og:description" content="Sayt admini: Usmonov Azimjon Akmaljon o'g'li. Tojik, Turk, Afg'on va jahon tillari cheksiz lug'ati, bog'cha bolalariga tugamaydigan she'rlar, maktabga tayyorgarlik darsliklari hamda 5 marta A'lo baho uchun Rasmiy A4 Sertifikat!" />
+  <meta property="og:image" content="https://imkoniyatlar-kaliti-1.vercel.app/assets/bg-education.png" />
+  <meta property="og:image:alt" content="Imkoniyatlar kaliti — Sayt admini Usmonov Azimjon Akmaljon o'g'li" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X Large Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🔑 IMKONIYATLAR KALITI — Sayt Admini: Usmonov Azimjon Akmaljon o'g'li" />
+  <meta name="twitter:description" content="Barcha tillar cheksiz lug'ati (Tojik, Turk, Afg'on...), bog'cha she'rlari, maktab darsliklari va 5x A'lo A4 Sertifikat platformasi!" />
+  <meta name="twitter:image" content="https://imkoniyatlar-kaliti-1.vercel.app/assets/bg-education.png" />
+
+  <!-- Schema.org JSON-LD Qidiruv Tizimlari va Tarmoqlar Uchun -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Imkoniyatlar kaliti",
+    "alternateName": "IMKONIYATLAR KALITI Platformasi",
+    "founder": {
+      "@type": "Person",
+      "name": "Usmonov Azimjon Akmaljon o'g'li"
+    },
+    "image": "https://imkoniyatlar-kaliti-1.vercel.app/assets/bg-education.png",
+    "description": "Barcha tillarga cheksiz lug'at (Tojik, Turk, Afg'on, Ingliz, Rus, Nemis, Xitoy, Koreys), bog'cha bolalariga tugamaydigan she'rlar, boshlang'ich maktabga tayyorgarlik darsliklari va 5x A'lo A4 Sertifikat platformasi."
+  }
+  </script>
+
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="apple-touch-icon" href="assets/logo.png" />
@@ -18,12 +54,12 @@
 </head>
 <body>
 
-  <!-- FIXED GLOBAL BACKGROUND: 30-year-old man at computer + 4th-grade boy reading book -->
+  <!-- FIXED GLOBAL BACKGROUND -->
   <div class="global-backdrop" aria-hidden="true"></div>
 
   <!-- ========================================================================
-       LIVE TOP STATUS BAR (Clock, Weather, Location, Currency Ticker, 24/7 OS)
-       Updates every second!
+       LIVE TOP STATUS BAR (Admin Name, Observers Count, Clock, Weather, Currencies)
+       Visible across all windows & operating systems!
        ======================================================================== -->
   <div class="live-topbar">
     <div class="live-topbar-inner">
@@ -32,10 +68,11 @@
           <span class="pulse-dot"></span>
           <span data-i18n="status247">24/7 Barcha OS da faol (iPhone/iPad/Android/Win/Mac/Linux)</span>
         </span>
-        <span class="live-pill" id="liveClockDisplay">⏰ Yuklanmoqda...</span>
-        <span class="live-pill">
-          <select id="citySelectDropdown" class="city-select" title="Joylashuvingizni tanlang"></select>
-          <span id="liveWeatherDisplay">☀️ +21.0°C</span>
+        <span class="live-pill" style="background:linear-gradient(90deg, rgba(245,158,11,0.25), rgba(16,185,129,0.22)); border-color:#fbbf24; color:#fde68a; font-weight:800;">
+          👑 Sayt admini: <strong>Usmonov Azimjon Akmaljon o'g'li</strong>
+        </span>
+        <span class="live-pill" title="Jonli kuzatuvchilar soni">
+          👁️ Kuzatuvchilar: Onlayn <strong class="js-online-observers" style="color:#34d399;">174</strong> | Bugun <strong class="js-today-observers" style="color:#38bdf8;">1,846</strong> | Jami <strong class="js-total-observers" style="color:#fbbf24;">58,421</strong>
         </span>
       </div>
 
@@ -45,8 +82,13 @@
       </div>
 
       <div class="live-group">
+        <span class="live-pill" id="liveClockDisplay">⏰ Yuklanmoqda...</span>
+        <span class="live-pill">
+          <select id="citySelectDropdown" class="city-select" title="Joylashuvingizni tanlang"></select>
+          <span id="liveWeatherDisplay">☀️ +21.0°C</span>
+        </span>
         <a href="mailto:asusadmin21@gmail.com" class="live-pill" style="text-decoration:none; color:#fde68a; border-color:rgba(245,158,11,0.4);">
-          ✉️ Admin: <strong>asusadmin21@gmail.com</strong>
+          ✉️ <strong>asusadmin21@gmail.com</strong>
         </a>
       </div>
     </div>
@@ -65,8 +107,8 @@
           <div class="brand-title">
             🔑 <span data-i18n="siteName">IMKONIYATLAR KALITI</span>
           </div>
-          <div class="brand-subtitle" data-i18n="siteTagline">
-            24/7 Barcha Operatsion Tizimlarda Ishlovchi Milliy va Xalqaro Ta'lim, Tibbiyot va Telekommunikatsiya Platformasi
+          <div class="brand-subtitle">
+            👑 Sayt admini: <strong style="color:#fbbf24;">Usmonov Azimjon Akmaljon o'g'li</strong> • Barcha Operatsion Tizimlarda 24/7 Ishlovchi Ta'lim Platformasi
           </div>
         </div>
       </a>
@@ -76,29 +118,41 @@
         <button class="nav-btn active" data-target="viewHome" onclick="switchView('viewHome')">
           🏠 <span data-i18n="navHome">Bosh menyu</span>
         </button>
+        <button class="nav-btn gold-btn" data-target="viewDictionary" onclick="switchView('viewDictionary'); renderDictionaryExplorer();">
+          🌍 <span>Cheksiz Lug'at (Tojik/Turk/Afg'on...)</span>
+        </button>
+        <button class="nav-btn gold-btn" data-target="viewPreschool" onclick="switchView('viewPreschool'); renderPreschoolHub();">
+          🧸 <span>Bog'cha She'rlari va Maktab Darsliklari</span>
+        </button>
         <button class="nav-btn" data-target="viewTelecom" onclick="switchView('viewTelecom')">
-          📡 <span data-i18n="navTelecom">Telekom va Qurilmalar Chizmasi</span>
+          📡 <span data-i18n="navTelecom">Telekom va Chizmalar</span>
         </button>
         <button class="nav-btn" data-target="viewLeaderboard" onclick="switchView('viewLeaderboard'); renderLeaderboard('all');">
-          📊 <span data-i18n="navRating">Kunlik / Haftalik / Oylik Reyting</span>
+          📊 <span data-i18n="navRating">Reyting</span>
         </button>
         <button class="nav-btn gold-btn" data-target="viewCertificate" onclick="switchView('viewCertificate'); renderCertificateView(false);">
-          🏆 <span data-i18n="navCertSample">Sertifikat va Namuna</span>
+          🏆 <span data-i18n="navCertSample">5x A'lo Sertifikat</span>
+        </button>
+        <button class="nav-btn" data-target="viewPromo" onclick="switchView('viewPromo')">
+          📣 <span>Reklama va Ulashish</span>
         </button>
         <button class="nav-btn" data-target="viewForum" onclick="switchView('viewForum'); renderForumPosts();">
           💬 <span data-i18n="navForum">Bildirgi va Muhokama</span>
         </button>
       </nav>
 
-      <!-- Language Switcher (UZ / RU / EN) & One-Time User Profile Chip -->
+      <!-- Language Switcher (UZ / RU / EN / TJ / TR / AF) & Certificate Status Chip -->
       <div class="header-controls">
-        <div class="lang-switcher">
+        <div class="lang-switcher" title="Sayt interfeysi tili (Tojik, Turk, Afg'on tillari bilan)">
           <button class="lang-btn active" data-lang="uz" onclick="setLanguage('uz')">UZ</button>
+          <button class="lang-btn" data-lang="tj" onclick="setLanguage('tj')">🇹🇯 TJ</button>
+          <button class="lang-btn" data-lang="tr" onclick="setLanguage('tr')">🇹🇷 TR</button>
+          <button class="lang-btn" data-lang="af" onclick="setLanguage('af')">🇦🇫 AF</button>
           <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
           <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
         </div>
         <div class="user-badge" id="headerUserBadge" onclick="openRegistrationModal()">
-          👤 <span>Ro'yxatdan o'tish</span>
+          🏆 <span>5x A'lo Sertifikat</span>
         </div>
       </div>
     </div>
@@ -111,36 +165,72 @@
 
     <!-- ==================== 1. HOME / MAIN MENU VIEW ==================== -->
     <section id="viewHome">
+      <!-- Persistent Admin & Observers Banner inside Home Window -->
+      <div class="window-admin-showcase">
+        <div>
+          👑 <strong>Sayt Admini va Asoschisi:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; font-size:0.86rem;">
+          <span>🟢 Onlayn kuzatuvchilar: <strong class="js-online-observers" style="color:#34d399;">174</strong></span>
+          <span>📅 Bugungi kuzatuvchilar: <strong class="js-today-observers" style="color:#38bdf8;">1,846</strong></span>
+          <span>👁️ Jami kuzatuvchilar: <strong class="js-total-observers" style="color:#fbbf24;">58,421</strong></span>
+        </div>
+      </div>
+
       <div class="hero-banner">
         <div class="hero-grid">
           <div>
             <div class="hero-badge">
-              ✨ <span data-i18n="heroBadge">Cheksiz va Takrorlanmas Millionlab Testlar va Nazariyalar Bazasi</span>
+              ✨ <span data-i18n="heroBadge">Cheksiz Tillar Lug'ati (A1–C2), Bog'cha She'rlari, Maktab Darsliklari va Millionlab Testlar</span>
             </div>
             <h1 class="hero-title" data-i18n="heroTitle">
-              Bilim — kelajak kaliti! A'lo kayfiyatda o'rganing va 5 marta takroran A'lo baho olib "IMKONIYATLAR KALITI" Rasmiy A4 Elektron Sertifikatiga ega bo'ling!
+              «Imkoniyatlar kaliti» — Barcha tillarga boshlang'ichdan to oxirigacha cheksiz lug'at, bog'cha va maktab darsliklari hamda 5x A'lo Sertifikat!
             </h1>
-            <p class="hero-desc" data-i18n="heroDesc">
-              HTML, CSS, JS, Python, Java, C/C++, C#, PHP, Tibbiyot (1-3 kurs Med texnikum va OTM), Telekommunikatsiya (L1-L3 Switch, Router, SFP, Wi-Fi, IP Kamera, NVR, Serverlar chizmalari bilan), Maktab fanlari (1-12 sinf) hamda Nemis (Germaniya ishlash/sertifikat), Ingliz, Rus, Xitoy va Koreys tillari!
-            </p>
 
-            <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <button class="btn btn-primary" onclick="initiateSubjectTest('html5')">
-                🚀 HTML / CSS / JS 30 talik Testni Boshlash
+            <!-- Qofiyali Sertifikat Qoidasi Box -->
+            <div class="poetic-rhyme-banner">
+              <div style="font-size:0.8rem; color:#fde68a; font-weight:800; text-transform:uppercase; margin-bottom:4px;">
+                🌟 Test yechishdan oldin ism-familiya so'ralmaydi! Qofiyali shiorimiz:
+              </div>
+              <div class="poetic-rhyme-lines">
+                «Har-xil yo bir yo'nalishda sinab ko'ring o'zingizni,<br/>
+                Ilm nuri bilan charog'on eting bosgan izingizni!<br/>
+                Agar siz har-xil yoki bir yo'nalishda 5 marta "A'lo" bahoga test yechsangiz —<br/>
+                Faxrli Sertifikatga ega bo'lasiz, ulug'lab g'oliblik hissingizni!»
+              </div>
+              <div style="font-size:0.82rem; color:#cbd5e1; margin-top:4px;">
+                ✅ 5 marta "A'lo" bahoga yechgandan keyin Sertifikatni yuklayotganda <strong>Ism, Familiya va Otasining ismi (familiyasi)</strong> so'raladi!
+              </div>
+            </div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;">
+              <button class="btn btn-gold" onclick="switchView('viewDictionary'); renderDictionaryExplorer();">
+                🌍 Cheksiz Lug'at (Tojik, Turk, Afg'on va Barcha Tillar)
               </button>
-              <button class="btn btn-gold" onclick="switchView('viewCertificate'); renderCertificateView(true);">
-                📜 Sertifikat Namunasini Ko'rish
+              <button class="btn btn-success" onclick="switchView('viewPreschool'); renderPreschoolHub();">
+                🧸 Bog'cha She'rlari va Maktabga Tayyorgarlik Darsliklari
               </button>
-              <button class="btn btn-secondary" onclick="switchView('viewTelecom')">
-                🖧 Tarmoq Qurilmalari va Chizmalari
+              <button class="btn btn-primary" onclick="initiateSubjectTest('tojik-tili')">
+                🚀 Darhol Test Boshlash (Ismsiz kirish)
+              </button>
+              <button class="btn btn-secondary" onclick="switchView('viewPromo')">
+                📣 Saytni Tarmoqlarda Reklama Qilish
               </button>
             </div>
 
             <!-- Main Menu Visit & Usage Statistics -->
             <div class="stats-grid">
               <div class="stat-card">
+                <div class="stat-value"><span class="js-total-observers">58,421</span></div>
+                <div class="stat-label">Jami kuzatuvchilar soni</div>
+              </div>
+              <div class="stat-card green">
+                <div class="stat-value"><span class="js-online-observers">174</span> ta</div>
+                <div class="stat-label">Hozir onlayn kuzatuvchilar</div>
+              </div>
+              <div class="stat-card">
                 <div class="stat-value" id="statVisitsVal">1 marta</div>
-                <div class="stat-label" data-i18n="statVisits">Saytga kirishlar soni</div>
+                <div class="stat-label" data-i18n="statVisits">Sizning kirishlaringiz</div>
               </div>
               <div class="stat-card green">
                 <div class="stat-value" id="statSolvedVal">0 ta</div>
@@ -151,29 +241,29 @@
                 <div class="stat-label" data-i18n="statExcellentCount">5x A'lo Sertifikat ko'rsatkichi</div>
               </div>
               <div class="stat-card">
-                <div class="stat-value">15,000,000+</div>
-                <div class="stat-label" data-i18n="statUniqueQuestions">Takrorlanmas savollar bazasi</div>
-              </div>
-              <div class="stat-card">
                 <div class="stat-value" id="statActiveTimeVal">0 daq 0 soniya</div>
                 <div class="stat-label" data-i18n="statActiveTime">Umumiy foydalanish vaqti</div>
               </div>
             </div>
           </div>
 
-          <!-- Dual Visual Card: 30-year-old at computer + 4th-grade boy reading a book -->
+          <!-- Dual Visual Card + Admin Highlight -->
           <div class="hero-visual-card">
             <div class="dual-portrait-frame">
-              <img src="assets/bg-education.png" alt="Kompyuter oldida o'tirgan 30 yoshli mutaxassis va kitob o'qiyotgan 4-sinf o'quvchisi" class="dual-portrait-img" />
+              <img src="assets/bg-education.png" alt="Imkoniyatlar kaliti — Glavni rasm" class="dual-portrait-img" />
+            </div>
+            <div style="background:rgba(245,158,11,0.16); border:1.5px solid #fbbf24; border-radius:12px; padding:10px 14px; text-align:center;">
+              <div style="font-size:0.76rem; color:#fde68a; text-transform:uppercase; font-weight:800;">👑 Loyiha Asoschisi va Sayt Admini</div>
+              <div style="font-size:1.18rem; font-weight:900; color:#ffffff; margin-top:2px;">Usmonov Azimjon Akmaljon o'g'li</div>
             </div>
             <div class="portrait-overlay-captions">
               <div class="portrait-caption-box">
                 <span style="font-size:1.3rem;">👦📖</span>
-                <span data-i18n="caption4thGrade">4-sinf o'quvchisi kitob mutolaa qilmoqda — uzluksiz ta'lim!</span>
+                <span data-i18n="caption4thGrade">Bog'cha va maktab o'quvchilari uchun eng zo'r darsliklar!</span>
               </div>
               <div class="portrait-caption-box">
                 <span style="font-size:1.3rem;">👨‍💻🖥️</span>
-                <span data-i18n="caption30yo">30 yoshli dasturchi va muhandis zamonaviy kompyuter oldida</span>
+                <span data-i18n="caption30yo">Barcha tillar lug'ati, IT, Tibbiyot va Telekommunikatsiya</span>
               </div>
             </div>
           </div>
@@ -184,14 +274,15 @@
       <div class="control-bar">
         <div class="search-input-wrap">
           <span class="search-icon">🔍</span>
-          <input type="text" id="globalSearchInput" class="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Fan, kurs, sinf, dasturlash tili yoki tarmoq qurilmasini qidiring..." />
+          <input type="text" id="globalSearchInput" class="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Til (Tojik, Turk, Afg'on...), bog'cha she'ri, maktab darsligi, fan yoki qurilmani qidiring..." />
         </div>
         <div class="category-pills">
-          <button class="cat-pill active" data-cat="all" data-i18n="catAll">Barchasi (26 yo'nalish)</button>
+          <button class="cat-pill active" data-cat="all" data-i18n="catAll">Barchasi (31 yo'nalish)</button>
+          <button class="cat-pill" data-cat="langs">🌍 Tillar (Tojik, Turk, Afg'on, Ingliz, Rus, Nemis, Xitoy, Koreys)</button>
+          <button class="cat-pill" data-cat="preschool">🧸 Bog'cha She'rlari &amp; Maktabga Tayyorgarlik Darsliklari</button>
+          <button class="cat-pill" data-cat="school" data-i18n="catSchool">Maktab va OTM (1-12 sinf fanlari)</button>
           <button class="cat-pill" data-cat="webprog" data-i18n="catWebProg">Web &amp; Dasturlash (HTML/CSS/JS/Python/C++...)</button>
           <button class="cat-pill" data-cat="med" data-i18n="catMed">Med Texnikum (1-3 kurs) &amp; Tibbiyot</button>
-          <button class="cat-pill" data-cat="school" data-i18n="catSchool">Maktab va OTM (1-12 sinf fanlari)</button>
-          <button class="cat-pill" data-cat="langs" data-i18n="catLangs">Tillar (Ingliz, Rus, Nemis, Xitoy, Koreys)</button>
           <button class="cat-pill" data-cat="telecom" data-i18n="catTelecom">Telekommunikatsiya &amp; Tarmoqlar</button>
         </div>
       </div>
@@ -200,13 +291,113 @@
       <div class="subjects-grid" id="subjectsGridContainer"></div>
     </section>
 
+    <!-- ==================== 1B. INFINITE MULTI-LANGUAGE DICTIONARY VIEW ==================== -->
+    <section id="viewDictionary" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>🌍 <strong>Bo'lim:</strong> Barcha tillarga boshlang'ichdan (A1) to oxirigacha (C2) Cheksiz Lug'at | 👁️ Onlayn: <strong class="js-online-observers">174</strong></div>
+      </div>
+
+      <div class="subview-backbar">
+        <div>
+          <h2>🌍 Barcha Tillarga Boshlang'ichdan (A1) To Oxirigacha (C2) Cheksiz Lug'at</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            Alohida qo'shilgan <strong>Tojik tili (Тоҷикӣ)</strong>, <strong>Turk tili (Türkçe)</strong>, <strong>Afg'on tili (Dari / Pushtu — دری / پښتو)</strong> hamda Ingliz, Rus, Arab, Nemis, Xitoy, Koreys va Fransuz tillari!
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="test-workspace">
+        <h3 style="color:#fbbf24; margin-bottom:10px;">1. Tilni tanlang (Tojik, Turk va Afg'on tillari alohida ajratilgan):</h3>
+        <div class="category-pills" id="dictLanguagePills" style="margin-bottom:16px;"></div>
+
+        <h3 style="color:#38bdf8; margin-bottom:10px;">2. Darajani tanlang (Boshlang'ich A1 dan Mukammal C2 oxirigacha):</h3>
+        <div class="category-pills" id="dictLevelPills" style="margin-bottom:16px;"></div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+          <div class="search-input-wrap" style="flex:1;">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="dictSearchInput" class="search-input" placeholder="So'z, tarjima, talaffuz yoki mavzu bo'yicha qidiring..." oninput="renderDictionaryExplorer()" />
+          </div>
+          <button class="btn btn-gold" onclick="loadMoreDictionaryWords(24)">⚡ +24 ta Yangi So'z Yuklash (Cheksiz)</button>
+        </div>
+
+        <div id="dictCountBanner" style="margin-bottom:16px; padding:10px 14px; border-radius:10px; background:rgba(15,23,42,0.9); border:1px solid var(--border-gold); font-size:0.9rem;"></div>
+
+        <div class="subjects-grid" id="dictCardsGrid"></div>
+
+        <div style="text-align:center; margin-top:22px;">
+          <button class="btn btn-primary" onclick="loadMoreDictionaryWords(36)">
+            🔄 Yana +36 ta Keyingi Bosqich So'zlarini Ochish (Cheksiz Davom Etadi)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 1C. PRESCHOOL POEMS & ELEMENTARY SCHOOL TEXTBOOKS VIEW ==================== -->
+    <section id="viewPreschool" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>🧸 <strong>Bo'lim:</strong> Bog'cha bolalariga tugamaydigan she'rlar va Boshlang'ich maktabga tayyorgarlik darsliklari</div>
+      </div>
+
+      <div class="subview-backbar">
+        <div>
+          <h2>🧸 Bog'cha Bolalariga O'rgatish Uchun Tugamaydigan She'rlar &amp; Boshlang'ich Maktabga Tayyorgarlik Darsliklari</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            Tarbiyachi-o'qituvchilar va ota-onalar uchun metodik tavsiyali tugamaydigan she'rlar hamda 1-sinfga tayyorlovchi eng zo'r interaktiv darsliklar!
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <!-- Part 1: Endless Poems for Kindergarten Teachers & Children -->
+      <div class="test-workspace" style="margin-bottom:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+          <div>
+            <h3 style="color:#fbbf24; font-size:1.3rem;">🎶 1-Bo'lim: Bog'cha bolalariga o'rgatish uchun o'qituvchi-tarbiyachilarga tugamaydigan she'rlar</h3>
+            <p style="font-size:0.86rem; color:var(--text-muted);">Har bir she'rda yosh guruhi, ovozli o'qish va tarbiyachi uchun metodik ko'rsatma mavjud.</p>
+          </div>
+          <button class="btn btn-gold" onclick="loadMorePreschoolPoems(6)">✨ +6 ta Yangi She'r Qo'shish (Tugamaydigan)</button>
+        </div>
+
+        <div class="category-pills" id="preschoolPoemCatPills" style="margin-bottom:18px;"></div>
+        <div class="subjects-grid" id="preschoolPoemsGrid"></div>
+
+        <div style="text-align:center; margin-top:20px;">
+          <button class="btn btn-success" onclick="loadMorePreschoolPoems(12)">
+            ➕ Yana +12 ta Yangi Bolalar She'rini Yaratish (Tugamaydigan Xazina)
+          </button>
+        </div>
+      </div>
+
+      <!-- Part 2: Elementary School Preparation Textbooks -->
+      <div class="test-workspace">
+        <h3 style="color:#38bdf8; font-size:1.3rem; margin-bottom:6px;">🎒 2-Bo'lim: Boshlang'ich maktabga tayyorgarlikka oid eng zo'r interaktiv darsliklar</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:18px;">
+          Alifbe va savodxonlik, Qiziqarli matematika, Atrof-olam, Nutq o'stirish va topishmoqlar, Bolalar uchun xorijiy tillar (Tojik, Turk, Afg'on, Ingliz, Rus) hamda Motorika darsliklari!
+        </p>
+        <div class="subjects-grid" id="preschoolTextbooksGrid"></div>
+      </div>
+    </section>
+
     <!-- ==================== 2. 30-QUESTION TEST ENGINE VIEW ==================== -->
     <section id="viewTestEngine" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>🏆 <strong>Qoida:</strong> Testdan oldin ism-familiya so'ralmaydi — 5 marta "A'lo" bahoga yechgach Sertifikat yuklashda so'raladi!</div>
+      </div>
+
       <div class="subview-backbar">
         <div>
           <h2 id="testHeaderTitle" style="font-size:1.25rem; color:#38bdf8;">30 talik Test Sinovi</h2>
           <p style="font-size:0.84rem; color:var(--text-muted);">
-            👤 Ishtirokchi: <strong id="testUserFullname"></strong> | Har bir test va savol takrorlanmas!
+            👤 Ishtirokchi: <strong id="testUserFullname"></strong> | 👑 Admin: <strong>Usmonov Azimjon Akmaljon o'g'li</strong>
           </p>
         </div>
         <button class="btn-exit-back" onclick="switchView('viewHome')">
@@ -250,6 +441,14 @@
           </div>
         </div>
 
+        <!-- Poetic Rhyme Reminder at Bottom of Test -->
+        <div class="poetic-rhyme-banner" style="margin-top:18px;">
+          <div class="poetic-rhyme-lines">
+            «Har-xil yo bir yo'nalishda sinab ko'ring o'zingizni, Ilm nuri bilan charog'on eting bosgan izingizni!<br/>
+            Agar siz har-xil yoki bir yo'nalishda 5 marta "A'lo" bahoga test yechsangiz — Faxrli Sertifikatga ega bo'lasiz!»
+          </div>
+        </div>
+
         <!-- Test Completion & Multi-format Result Download Panel -->
         <div id="testResultSummaryPanel" class="hidden" style="margin-top:24px; padding:22px; border-radius:14px; background:rgba(16,185,129,0.12); border:1px solid #10b981;">
           <div id="testSummaryDetails"></div>
@@ -273,6 +472,11 @@
 
     <!-- ==================== 3. THEORY & PRACTICAL LAB VIEW ==================== -->
     <section id="viewTheory" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>📖 <strong>Bo'lim:</strong> Nazariy va Amaliy Mashg'ulotlar Bazasi</div>
+      </div>
+
       <div class="subview-backbar">
         <h2>📖 Nazariy va Amaliy Mashg'ulotlar Bazasi (Har kuni yangilanadi va takrorlanmaydi)</h2>
         <button class="btn-exit-back" onclick="switchView('viewHome')">
@@ -284,6 +488,11 @@
 
     <!-- ==================== 4. TELECOM & HARDWARE SCHEMATICS VIEW ==================== -->
     <section id="viewTelecom" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>📡 <strong>Bo'lim:</strong> Telekommunikatsiya Qurilmalari va Ulanish Chizmalari</div>
+      </div>
+
       <div class="subview-backbar">
         <div>
           <h2>📡 Telekommunikatsiya Qurilmalari, Portlar, OSI 7 Pog'onasi va Ulanish Chizmalari</h2>
@@ -302,6 +511,11 @@
 
     <!-- ==================== 5. DAILY / WEEKLY / MONTHLY LEADERBOARD VIEW ==================== -->
     <section id="viewLeaderboard" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>📊 <strong>Bo'lim:</strong> Kunlik, Haftalik va Oylik Peshqadamlar Reytingi</div>
+      </div>
+
       <div class="subview-backbar">
         <div>
           <h2>📊 Kunlik, Haftalik va Oylik Reyting Jadvali</h2>
@@ -341,11 +555,16 @@
 
     <!-- ==================== 6. CERTIFICATE & SAMPLE VIEW (A4 FORMAT + QR/BARCODE) ==================== -->
     <section id="viewCertificate" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>🏆 <strong>Bo'lim:</strong> 5 marta "A'lo" bahoga test yechganlar uchun Rasmiy A4 Elektron Sertifikat</div>
+      </div>
+
       <div class="subview-backbar">
         <div>
           <h2>🏆 "IMKONIYATLAR KALITI" Rasmiy A4 Elektron Sertifikati</h2>
           <p style="font-size:0.86rem; color:var(--text-muted);">
-            Testlarni 5 marta takroran "A'LO" bahoga bajarganligi uchun "IMKONIYATLAR KALITI" platformasi va Sayt Admini (asusadmin21@gmail.com) nomidan ezgu tilaklar hamda QR-kod / Shtrix-kodli A4 Sertifikat
+            Har-xil yoki bir yo'nalishda 5 marta "A'LO" bahoga test yechganingizdan so'ng Sertifikatni yuklayotganda Ism, Familiya va Otangizning ismini kiritasiz — Sayt Admini <strong>Usmonov Azimjon Akmaljon o'g'li</strong> tasdig'i bilan!
           </p>
         </div>
         <button class="btn-exit-back" onclick="switchView('viewHome')">
@@ -356,10 +575,10 @@
       <div class="theory-block" id="certProgressNotice" style="text-align:center;"></div>
 
       <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
-        <button class="btn btn-primary" onclick="renderCertificateView(false)">👤 Mening Ismim Bilan Ko'rsatish</button>
+        <button class="btn btn-primary" onclick="openRegistrationModal()">✏️ Ism, Familiya va Otasining ismini kiritish / tahrirlash</button>
+        <button class="btn btn-secondary" onclick="renderCertificateView(false)">👤 Mening Ismim Bilan Ko'rsatish</button>
         <button class="btn btn-secondary" onclick="renderCertificateView(true)">🖼️ Sertifikat Namunasini Ko'rsatish</button>
-        <button class="btn btn-secondary" onclick="openRegistrationModal()">✏️ Ism-Familiya ma'lumotini tahrirlash</button>
-        <button class="btn btn-gold" onclick="downloadCertificate('pdf')">🖨️ A4 Formatda Chop Etish / PDF Saqlash</button>
+        <button class="btn btn-gold" onclick="downloadCertificate('pdf')">🖨️ Ism-Familiyani Tasdiqlab A4 PDF Yuklab Olish</button>
       </div>
 
       <!-- Visual Certificate Frame (A4 Format Proportion: 297mm x 210mm) -->
@@ -377,7 +596,7 @@
           </div>
           <div class="cert-header-title">IMKONIYATLAR KALITI</div>
           <div class="cert-subtitle-banner">
-            5 MARTA TAKRORAN "A'LO" BAHOGA BAJARGANLIK UCHUN RASMIY SERTIFIKAT
+            HAR-XIL YOKI BIR YO'NALISHDA 5 MARTA "A'LO" BAHOGA TEST YECHGANLIK UCHUN RASMIY SERTIFIKAT
           </div>
 
           <p style="margin-top:10px; color:var(--text-muted); font-size:0.95rem;">Ushbu faxriy sertifikat bilan taqdirlanadi:</p>
@@ -393,14 +612,14 @@
               <div style="color:#38bdf8; font-size:0.78rem; margin-top:2px;">Format: Standart A4 (Elektron)</div>
             </div>
 
-            <!-- Middle QR Code & Barcode (Shtrix-kod) replacing the old round seal -->
+            <!-- Middle QR Code & Barcode (Shtrix-kod) -->
             <div class="cert-qr-barcode-box" id="certQrBarcodeBox"></div>
 
             <div class="cert-footer-col">
-              <div style="color:#38bdf8; font-weight:800;">IMKONIYATLAR KALITI Admini:</div>
-              <div style="font-weight:700;">asusadmin21@gmail.com</div>
-              <div style="color:#34d399; font-size:0.82rem; margin-top:4px;">Rasmiy Sayt Nomidan Tasdiqlangan ✓</div>
-              <div style="color:#fde68a; font-size:0.78rem; margin-top:2px;">5x A'LO Baho So'zsiz Ko'rsatkichi</div>
+              <div style="color:#38bdf8; font-weight:800;">Sayt Admini va Asoschisi:</div>
+              <div style="font-weight:900; color:#fbbf24; font-size:1.02rem;">Usmonov Azimjon Akmaljon o'g'li</div>
+              <div style="font-weight:700; font-size:0.84rem;">asusadmin21@gmail.com</div>
+              <div style="color:#34d399; font-size:0.8rem; margin-top:2px;">Rasmiy Sayt Nomidan Tasdiqlangan ✓</div>
             </div>
           </div>
         </div>
@@ -408,7 +627,7 @@
 
       <!-- Multi-format Certificate Download Bar -->
       <div class="theory-block" style="margin-top:22px; text-align:center;">
-        <h3 style="margin-bottom:12px;">📥 Elektron Sertifikatni A4 Formatda va Barcha Fayl Ko'rinishlarida Yuklab Olish:</h3>
+        <h3 style="margin-bottom:12px;">📥 5 marta "A'lo" yechgach Ism-Familiyangiz bilan Sertifikatni Yuklab Olish:</h3>
         <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
           <button class="btn btn-gold" onclick="downloadCertificate('pdf')">📕 A4 PDF Formatda Yuklab Olish / Chop etish</button>
           <button class="btn btn-success" onclick="downloadCertificate('png')">🖼️ A4 Rasm (.PNG Yuqori Sifat) Yuklab Olish</button>
@@ -421,13 +640,84 @@
       </div>
     </section>
 
+    <!-- ==================== 6B. SOCIAL MEDIA PROMO & OBSERVERS VIEW ==================== -->
+    <section id="viewPromo" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>📣 <strong>Bo'lim:</strong> «Imkoniyatlar kaliti» — Barcha Sayt va Ijtimoiy Tarmoqlarda Reklama Markazi</div>
+      </div>
+
+      <div class="subview-backbar">
+        <div>
+          <h2>📣 Saytni Barcha Sayt va Ijtimoiy Tarmoqlarga Reklama Qilish Markazi</h2>
+          <p style="font-size:0.86rem; color:var(--text-muted);">
+            Telegram, Instagram, Facebook, WhatsApp, YouTube, X (Twitter), LinkedIn va qidiruv tizimlarida <strong>«Imkoniyatlar kaliti»</strong> deganda chiroyli asosiy rasm (Glavni rasm) bilan chiqadi!
+          </p>
+        </div>
+        <button class="btn-exit-back" onclick="switchView('viewHome')">
+          ⬅️ <span data-i18n="btnBackExit">Orqaga / Asosiy menyuga qaytish</span>
+        </button>
+      </div>
+
+      <div class="hero-grid">
+        <!-- Social Preview Card ("Imkoniyatlar kaliti" Glavni Rasm bilan) -->
+        <div class="test-workspace">
+          <h3 style="color:#fbbf24; margin-bottom:10px;">🖼️ Ijtimoiy Tarmoqlarda «Imkoniyatlar kaliti» Glavni Rasmi Bilan Ko'rinishi:</h3>
+          <div style="border:2px solid #fbbf24; border-radius:16px; overflow:hidden; background:#070d19; box-shadow:0 12px 35px rgba(0,0,0,0.6);">
+            <img src="assets/bg-education.png" alt="Imkoniyatlar kaliti glavni rasm" style="width:100%; height:240px; object-fit:cover; display:block;" />
+            <div style="padding:16px;">
+              <div style="font-size:0.76rem; color:#34d399; font-weight:800; text-transform:uppercase;">IMKONIYATLAR KALITI • RASMIY TA'LIM PLATFORMASI</div>
+              <h4 style="font-size:1.18rem; color:#ffffff; margin:6px 0;">🔑 Imkoniyatlar kaliti — Cheksiz Lug'at, Bog'cha She'rlari, Maktab Darsliklari va Sertifikat</h4>
+              <p style="font-size:0.86rem; color:#cbd5e1;">
+                👑 Sayt admini: <strong>Usmonov Azimjon Akmaljon o'g'li</strong>. Tojik, Turk, Afg'on va jahon tillari cheksiz lug'ati, bog'cha va maktab darsliklari, IT, Tibbiyot, Telekom va 5x A'lo A4 Sertifikat!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1-Click Share & Live Observers Stats -->
+        <div class="test-workspace">
+          <h3 style="color:#38bdf8; margin-bottom:10px;">🚀 Barcha Ijtimoiy Tarmoqlarga 1-Bosishda Reklama Yuborish:</h3>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:14px;">
+            Quyidagi tugmalar orqali saytni rasmiy rasm va tavsif bilan barcha tarmoq va guruhlarga tarqating:
+          </p>
+
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:16px;">
+            <button class="btn btn-primary" onclick="shareSiteToSocial('telegram')">✈️ Telegramda Ulashish</button>
+            <button class="btn btn-success" onclick="shareSiteToSocial('whatsapp')">💬 WhatsAppda Ulashish</button>
+            <button class="btn btn-primary" onclick="shareSiteToSocial('facebook')">📘 Facebookda Ulashish</button>
+            <button class="btn btn-secondary" onclick="shareSiteToSocial('twitter')">🐦 X / Twitterda Ulashish</button>
+            <button class="btn btn-secondary" onclick="shareSiteToSocial('linkedin')">💼 LinkedInda Ulashish</button>
+            <button class="btn btn-gold" onclick="copyPromoMaterial()">📋 Tayyor Reklama Matnini Nusxalash</button>
+          </div>
+
+          <div id="promoCopyStatus" style="color:#34d399; font-weight:700; font-size:0.9rem; margin-bottom:14px;"></div>
+
+          <div class="theory-block" style="margin-bottom:0;">
+            <h4 style="color:#fbbf24; margin-bottom:8px;">👁️ Jonli Kuzatuvchilar va Operatsion Tizimlar Qamrovi:</h4>
+            <p style="font-size:0.9rem; margin-bottom:4px;">🟢 Hozir saytni kuzatayotganlar (Onlayn): <strong class="js-online-observers" style="color:#34d399;">174</strong> kishi</p>
+            <p style="font-size:0.9rem; margin-bottom:4px;">📅 Bugungi tashrif buyuruvchilar: <strong class="js-today-observers" style="color:#38bdf8;">1,846</strong> kishi</p>
+            <p style="font-size:0.9rem; margin-bottom:4px;">🌍 Jami kuzatuvchilar soni: <strong class="js-total-observers" style="color:#fbbf24;">58,421</strong> kishi</p>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin-top:8px;">
+              💻 Barcha operatsion tizimlarda (Windows, Android, iPhone/iPad iOS, macOS, Linux, Smart TV) foydalanuvchilar hech qanday qiyinchiliksiz, tez va qulay foydalanishi uchun 100% moslashtirilgan!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ==================== 7. COMMUNITY FEEDBACK & Q&A FORUM VIEW ==================== -->
     <section id="viewForum" class="hidden">
+      <div class="window-admin-showcase">
+        <div>👑 <strong>Sayt Admini:</strong> <span class="admin-gold-name">Usmonov Azimjon Akmaljon o'g'li</span></div>
+        <div>💬 <strong>Bo'lim:</strong> Foydalanuvchilar Bildirgisi, Savol-Javob va Admin Bilan Muhokama</div>
+      </div>
+
       <div class="subview-backbar">
         <div>
           <h2>💬 Foydalanuvchilar Bildirgisi, Savol-Javob va Admin Bilan Muhokama</h2>
           <p style="font-size:0.86rem; color:var(--text-muted);">
-            Sayt haqida o'z fikringizni qoldiring, boshqa foydalanuvchilar bilan savol-javob qiling yoki Admin (<strong>asusadmin21@gmail.com</strong>) bilan bog'laning
+            Sayt haqida o'z fikringizni qoldiring, boshqa foydalanuvchilar bilan savol-javob qiling yoki Sayt Admini <strong>Usmonov Azimjon Akmaljon o'g'li</strong> (<strong>asusadmin21@gmail.com</strong>) bilan bog'laning
           </p>
         </div>
         <button class="btn-exit-back" onclick="switchView('viewHome')">
@@ -440,27 +730,27 @@
         <form onsubmit="handleNewForumPost(event)">
           <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin-bottom:12px;">
             <div>
-              <label style="font-size:0.82rem; color:var(--text-muted);">Ism-Familiyangiz (Ro'yxatdan o'tgan bo'lsangiz avtomatik yoziladi):</label>
+              <label style="font-size:0.82rem; color:var(--text-muted);">Ism-Familiyangiz:</label>
               <input type="text" id="forumAuthorInput" class="form-input" placeholder="F.I.Sh." />
             </div>
             <div>
               <label style="font-size:0.82rem; color:var(--text-muted);">Murojaat yo'nalishi:</label>
               <select id="forumCategorySelect" class="form-input">
                 <option value="Sayt haqida fikr va bildirgi">🌟 Sayt haqida fikr va bildirgi</option>
-                <option value="Adminga (asusadmin21@gmail.com) savol va taklif">👑 Adminga (asusadmin21@gmail.com) savol va taklif</option>
-                <option value="Foydalanuvchilar o'rtasida savol-javob (IT / Dasturlash)">💻 Foydalanuvchilar o'rtasida savol-javob (IT / Dasturlash)</option>
-                <option value="Med Texnikum va Tibbiyot savol-javoblari">🏥 Med Texnikum va Tibbiyot savol-javoblari</option>
-                <option value="Telekommunikatsiya va Tarmoq qurilmalari muhokamasi">📡 Telekommunikatsiya va Tarmoq qurilmalari muhokamasi</option>
+                <option value="Sayt Admini Usmonov Azimjon Akmaljon o'g'liga savol va taklif">👑 Sayt Admini Usmonov Azimjon Akmaljon o'g'liga savol va taklif</option>
+                <option value="Cheksiz Lug'at (Tojik, Turk, Afg'on va jahon tillari) muhokamasi">🌍 Cheksiz Lug'at (Tojik, Turk, Afg'on va jahon tillari) muhokamasi</option>
+                <option value="Bog'cha she'rlari va Maktabga tayyorgarlik darsliklari">🧸 Bog'cha she'rlari va Maktabga tayyorgarlik darsliklari</option>
+                <option value="IT, Tibbiyot va Telekommunikatsiya savol-javoblari">💻 IT, Tibbiyot va Telekommunikatsiya savol-javoblari</option>
               </select>
             </div>
           </div>
           <div class="form-group">
-            <textarea id="forumMessageInput" rows="3" class="form-textarea" required placeholder="O'z fikringiz, savolingiz yoki taklifingizni yozing... (Boshlanish, bajarish va tugatish vaqti avtomatik qayd etiladi)"></textarea>
+            <textarea id="forumMessageInput" rows="3" class="form-textarea" required placeholder="O'z fikringiz, savolingiz yoki taklifingizni yozing..."></textarea>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
             <button type="submit" class="btn btn-primary">📤 Bildirgini E'lon Qilish</button>
             <a href="mailto:asusadmin21@gmail.com?subject=Imkoniyatlar%20Kaliti%20Foydalanuvchi%20Murojaati" class="btn btn-gold">
-              ✉️ Admin pochtaga to'g'ridan-to'g'ri yozish (asusadmin21@gmail.com)
+              ✉️ Admin Usmonov Azimjon Akmaljon o'g'liga yozish (asusadmin21@gmail.com)
             </a>
           </div>
         </form>
@@ -472,15 +762,18 @@
   </main>
 
   <!-- ========================================================================
-       ONE-TIME USER REGISTRATION MODAL (Asked only once, stored in localStorage)
+       CERTIFICATE RECIPIENT MODAL (Asked when downloading Certificate after 5x A'lo!)
        ======================================================================== -->
   <div id="registrationModal" class="modal-overlay hidden">
     <div class="modal-card">
-      <h3 style="color:#fbbf24; font-size:1.25rem; margin-bottom:6px;" data-i18n="regModalTitle">
-        Foydalanuvchi ma'lumotlarini kiritish (Faqat 1 marta so'raladi)
+      <div style="font-size:0.78rem; color:#fde68a; font-weight:800; margin-bottom:4px;">
+        👑 Sayt admini: Usmonov Azimjon Akmaljon o'g'li
+      </div>
+      <h3 style="color:#fbbf24; font-size:1.22rem; margin-bottom:6px;">
+        🏆 Sertifikatni Yuklab Olish Uchun Ism, Familiya va Otasining Ismini (Familiyasini) Kiriting
       </h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;" data-i18n="regModalDesc">
-        Ma'lumotlaringiz xotirada saqlanadi va qayta kiritish talab etilmaydi. QR-kodli A4 rasmiy sertifikat sizning nomingizga rasmiylashtiriladi.
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">
+        Test yechishdan oldin ism-familiya so'ralmaydi! 5 marta "A'lo" bahoga test yechib Sertifikatni yuklayotganingizda ushbu ma'lumotlar A4 Elektron Sertifikatga yoziladi:
       </p>
       <form onsubmit="handleSaveRegistration(event)">
         <div class="form-group">
@@ -492,12 +785,12 @@
           <input type="text" id="regFirstName" class="form-input" required placeholder="Masalan: Jasurbek" autocomplete="given-name" />
         </div>
         <div class="form-group">
-          <label data-i18n="lblMiddleName">Otasining ismi (Sharifingiz) *</label>
+          <label data-i18n="lblMiddleName">Otasining ismi / familiyasi (Sharifingiz) *</label>
           <input type="text" id="regMiddleName" class="form-input" required placeholder="Masalan: Rustam o'g'li" autocomplete="additional-name" />
         </div>
         <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:18px; flex-wrap:wrap;">
           <button type="button" class="btn btn-secondary" onclick="closeRegistrationModal()">Bekor qilish</button>
-          <button type="submit" class="btn btn-gold" data-i18n="btnSaveProfile">Saqlash va Davom etish</button>
+          <button type="submit" class="btn btn-gold" data-i18n="btnSaveProfile">Saqlash va Sertifikatni Tayyorlash</button>
         </div>
       </form>
     </div>
@@ -508,15 +801,18 @@
        ======================================================================== -->
   <footer class="site-footer">
     <div style="max-width:1200px; margin:0 auto;">
-      <p style="font-size:1rem; font-weight:800; color:#fbbf24; margin-bottom:6px;">
-        🔑 IMKONIYATLAR KALITI — 24/7 Barcha Operatsion Tizimlarda Ishlovchi Milliy va Xalqaro Ta'lim Platformasi
+      <p style="font-size:1.08rem; font-weight:900; color:#fbbf24; margin-bottom:6px;">
+        🔑 «IMKONIYATLAR KALITI» — 24/7 Barcha Operatsion Tizimlarda Ishlovchi Milliy va Xalqaro Ta'lim Platformasi
       </p>
-      <p style="margin-bottom:8px;">
-        <span data-i18n="lblAdminContact">Imkoniyatlar Kaliti Admini bilan bog'lanish:</span>
-        <a href="mailto:asusadmin21@gmail.com" style="color:#38bdf8; font-weight:700; margin-left:6px;">asusadmin21@gmail.com</a>
+      <p style="font-size:1rem; color:#ffffff; font-weight:800; margin-bottom:6px;">
+        👑 Sayt admini va loyiha asoschisi: <span style="color:#fde68a;">Usmonov Azimjon Akmaljon o'g'li</span>
+        (<a href="mailto:asusadmin21@gmail.com" style="color:#38bdf8;">asusadmin21@gmail.com</a>)
+      </p>
+      <p style="font-size:0.84rem; color:#cbd5e1; margin-bottom:6px;">
+        👁️ Jonli kuzatuvchilar: Onlayn <strong class="js-online-observers">174</strong> | Bugun <strong class="js-today-observers">1,846</strong> | Jami <strong class="js-total-observers">58,421</strong>
       </p>
       <p style="font-size:0.78rem; color:var(--text-dim);">
-        Windows • macOS • Linux • Android • iOS | O'zbek • Русский • English | Barcha test va nazariyalar har kuni yangilanadi va qayta takrorlanmaydi.
+        Windows • macOS • Linux • Android • iOS (iPhone/iPad) | O'zbek • Тоҷикӣ • Türkçe • دری/پښتو • Русский • English | Cheksiz Lug'at, Bog'cha She'rlari, Maktab Darsliklari va 5x A'lo Sertifikat.
       </p>
     </div>
   </footer>
@@ -525,6 +821,7 @@
   <script src="js/i18n.js"></script>
   <script src="js/data-telecom.js"></script>
   <script src="js/data-subjects.js"></script>
+  <script src="js/data-extra.js"></script>
   <script src="js/app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {

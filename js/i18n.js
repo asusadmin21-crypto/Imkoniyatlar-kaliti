@@ -175,6 +175,45 @@ const I18N = {
     btnSaveProfile: "Save & Continue",
     msgCorrect: "Awesome! Correct Answer!",
     msgWrong: "Incorrect! The right answer is highlighted in green and selection is locked."
+  },
+  tj: {
+    siteName: "КАЛИДИ ИМКОНИЯТҲО (IMKONIYATLAR KALITI)",
+    siteTagline: "Платформаи байналмилалии таълимӣ, луғати беохир, шеърҳои кӯдакистон ва сертификати А4 (Админ: Usmonov Azimjon Akmaljon o'g'li)",
+    status247: "24/7 Фаъол дар ҳамаи системаҳои оператсионӣ (Windows/Android/iOS/Mac/Linux)",
+    navHome: "Менюи асосӣ",
+    navTelecom: "Телеком ва Нақшаҳо",
+    navRating: "Рейтинг",
+    navCertSample: "Сертификати А4",
+    navForum: "Муҳокима",
+    heroBadge: "Луғати беохир (А1–С2), Шеърҳои кӯдакистон, Китобҳои дарсӣ ва Тестҳо",
+    heroTitle: "Дониш — калиди имкониятҳо! 5 маротиба ба баҳои «Аъло» тест супоред ва соҳиби Сертификати расмии А4 гардед!",
+    btnBackExit: "Бозгашт ба менюи асосӣ"
+  },
+  tr: {
+    siteName: "FIRSATLARIN ANAHTARI (IMKONIYATLAR KALITI)",
+    siteTagline: "Tüm İşletim Sistemlerinde 7/24 Çalışan Sınırsız Sözlük, Anaokulu Şiirleri, İlkokul Derslikleri ve A4 Sertifika Platformu (Admin: Usmonov Azimjon Akmaljon o'g'li)",
+    status247: "7/24 Tüm İşletim Sistemlerinde Aktif (Windows/Android/iOS/Mac/Linux)",
+    navHome: "Ana Menü",
+    navTelecom: "Telekom ve Şemalar",
+    navRating: "Sıralama",
+    navCertSample: "A4 Sertifika",
+    navForum: "Tartışma ve Yorumlar",
+    heroBadge: "Sınırsız Sözlük (A1–C2), Anaokulu Şiirleri, İlkokul Hazırlık ve Testler",
+    heroTitle: "Bilgi Fırsatların Anahtarıdır! Farklı veya aynı alanda 5 kez Pekiyi (A'lo) alarak Resmi A4 Sertifikanızı kazanın!",
+    btnBackExit: "Ana Menüye Dön"
+  },
+  af: {
+    siteName: "د فرصتونو کیلي / کلید امکانات (IMKONIYATLAR KALITI)",
+    siteTagline: "پلاتفورم آموزشی ۲۴/۷، لغت‌نامه بی‌نهایت، اشعار کودکستان، دروس آمادگی مکتب و تصدیق‌نامه رسمی (ادمین: Usmonov Azimjon Akmaljon o'g'li)",
+    status247: "24/7 فعال در تمام سیستم‌های عامل (Windows/Android/iOS/Mac/Linux)",
+    navHome: "مینوی اصلی",
+    navTelecom: "مخابرات و شبکه‌ها",
+    navRating: "درجه‌بندی",
+    navCertSample: "تصدیق‌نامه A4",
+    navForum: "نظریات و گفتگو",
+    heroBadge: "لغت‌نامه بی‌نهایت (A1–C2)، اشعار کودکستان و دروس مکتب",
+    heroTitle: "پوهنه د فرصتونو کیلي ده! ۵ ځله په اعلی درجه ازموینه حل کړئ او رسمي تصدیق پاڼه ترلاسه کړئ!",
+    btnBackExit: "بیرته اصلي مینو ته"
   }
 };
 
@@ -193,14 +232,16 @@ function setLanguage(lang) {
   });
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (I18N[lang][key]) {
-      el.textContent = I18N[lang][key];
+    const val = (I18N[lang] && I18N[lang][key]) || I18N.uz[key];
+    if (val) {
+      el.textContent = val;
     }
   });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
-    if (I18N[lang][key]) {
-      el.setAttribute('placeholder', I18N[lang][key]);
+    const val = (I18N[lang] && I18N[lang][key]) || I18N.uz[key];
+    if (val) {
+      el.setAttribute('placeholder', val);
     }
   });
   if (typeof window.onLanguageChanged === 'function') {
@@ -209,7 +250,7 @@ function setLanguage(lang) {
 }
 
 /* ==========================================================================
-   REAL-TIME CLOCK, WEATHER, GEOLOCATION & CURRENCY RATES (EVERY SECOND)
+   REAL-TIME CLOCK, WEATHER, GEOLOCATION, CURRENCY & LIVE OBSERVERS COUNTER
    ========================================================================== */
 const CITIES_WEATHER = {
   "Toshkent": { lat: 41.2995, lon: 69.2401, baseTemp: 21, cond: "☀️ Ochiq / Musaffo", wind: "3.2 m/s", hum: "42%" },
@@ -225,6 +266,9 @@ const CITIES_WEATHER = {
   "Jizzax": { lat: 40.1158, lon: 67.8422, baseTemp: 20, cond: "🌤️ Ochiq", wind: "3.1 m/s", hum: "44%" },
   "Guliston": { lat: 40.4897, lon: 68.7842, baseTemp: 21, cond: "☀️ Ochiq", wind: "3.3 m/s", hum: "43%" },
   "Navoiy": { lat: 40.0844, lon: 65.3792, baseTemp: 22, cond: "☀️ Quyoshli", wind: "3.7 m/s", hum: "37%" },
+  "Dushanbe (Tojikiston)": { lat: 38.5598, lon: 68.7870, baseTemp: 22, cond: "☀️ Musaffo", wind: "2.5 m/s", hum: "40%" },
+  "Istanbul / Anqara (Turkiya)": { lat: 41.0082, lon: 28.9784, baseTemp: 19, cond: "🌤️ Yoqimli", wind: "3.6 m/s", hum: "55%" },
+  "Qobul / Mozori-Sharif (Afg'oniston)": { lat: 34.5553, lon: 69.2075, baseTemp: 20, cond: "☀️ Quyoshli", wind: "3.0 m/s", hum: "34%" },
   "Berlin (Germaniya)": { lat: 52.5200, lon: 13.4050, baseTemp: 15, cond: "⛅ Bulutli", wind: "4.0 m/s", hum: "62%" },
   "Moskva (Rossiya)": { lat: 55.7558, lon: 37.6173, baseTemp: 12, cond: "🌦️ Salqin", wind: "3.8 m/s", hum: "68%" },
   "Seul (Koreya)": { lat: 37.5665, lon: 126.9780, baseTemp: 19, cond: "☀️ Musaffo", wind: "2.7 m/s", hum: "52%" },
@@ -234,20 +278,24 @@ const CITIES_WEATHER = {
 const CURRENCIES = [
   { code: "USD", name: "AQSH Dollari", flag: "🇺🇸", base: 12845.50 },
   { code: "EUR", name: "Yevro", flag: "🇪🇺", base: 13920.80 },
+  { code: "TJS", name: "Tojikiston Somonisi", flag: "🇹🇯", base: 1178.40 },
+  { code: "TRY", name: "Turkiya Lirasi", flag: "🇹🇷", base: 374.90 },
+  { code: "AFN", name: "Afg'oniston Afg'onisi", flag: "🇦🇫", base: 189.20 },
   { code: "RUB", name: "Rossiya Rubli", flag: "🇷🇺", base: 136.40 },
   { code: "GBP", name: "Angliya Funti", flag: "🇬🇧", base: 16480.25 },
   { code: "CNY", name: "Xitoy Yuani", flag: "🇨🇳", base: 1795.60 },
   { code: "KRW", name: "Koreya Voni (100)", flag: "🇰🇷", base: 942.15 },
-  { code: "JPY", name: "Yaponiya Iyenasi (100)", flag: "🇯🇵", base: 8510.30 },
-  { code: "CHF", name: "Shveytsariya Franki", flag: "🇨🇭", base: 14790.00 },
   { code: "KZT", name: "Qozog'iston Tengesi", flag: "🇰🇿", base: 26.45 },
-  { code: "TRY", name: "Turkiya Lirasi", flag: "🇹🇷", base: 374.90 },
   { code: "AED", name: "BAA Dirhami", flag: "🇦🇪", base: 3497.80 },
   { code: "BTC", name: "Bitcoin (USD)", flag: "₿", base: 68450.00, isUsd: true }
 ];
 
 let selectedCity = SafeStorage.getItem('ik_city') || "Toshkent";
 let liveTempDelta = 0;
+let totalObserversCount = parseInt(SafeStorage.getItem('ik_total_observers') || '58420', 10) + 1;
+let todayObserversCount = parseInt(SafeStorage.getItem('ik_today_observers') || '1845', 10) + 1;
+SafeStorage.setItem('ik_total_observers', totalObserversCount);
+SafeStorage.setItem('ik_today_observers', todayObserversCount);
 
 async function fetchRealWeather(cityKey) {
   const city = CITIES_WEATHER[cityKey] || CITIES_WEATHER["Toshkent"];
@@ -319,6 +367,18 @@ function updateClockAndTickers() {
     }).join('');
     tickerEl.innerHTML = html;
   }
+
+  // Live Observers Counter (Kuzatuvchilar soni)
+  const onlineNow = 165 + Math.floor((Math.sin(now.getTime() / 4000) + 1) * 18);
+  document.querySelectorAll('.js-online-observers').forEach(el => {
+    el.textContent = onlineNow.toLocaleString('en-US');
+  });
+  document.querySelectorAll('.js-today-observers').forEach(el => {
+    el.textContent = todayObserversCount.toLocaleString('en-US');
+  });
+  document.querySelectorAll('.js-total-observers').forEach(el => {
+    el.textContent = totalObserversCount.toLocaleString('en-US');
+  });
 }
 
 function initLiveTopbar() {

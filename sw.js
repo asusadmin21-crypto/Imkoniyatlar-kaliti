@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imkoniyatlar-kaliti-24-7-v2';
+const CACHE_NAME = 'imkoniyatlar-kaliti-24-7-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -6,6 +6,7 @@ const ASSETS = [
   './js/i18n.js',
   './js/data-telecom.js',
   './js/data-subjects.js',
+  './js/data-extra.js',
   './js/app.js',
   './assets/logo.png',
   './assets/bg-education.png'

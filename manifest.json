@@ -1,7 +1,7 @@
 {
-  "name": "IMKONIYATLAR KALITI — 24/7 Xalqaro Ta'lim, Tibbiyot va Telekommunikatsiya Platformasi",
+  "name": "IMKONIYATLAR KALITI — 24/7 Xalqaro Ta'lim, Cheksiz Lug'at (A1-C2), Bog'cha va Maktabga Tayyorlov Platformasi (Admin: Usmonov Azimjon Akmaljon o'g'li)",
   "short_name": "Imkoniyatlar Kaliti",
-  "description": "Barcha operatsion tizimlarda 24/7 ishlovchi HTML, CSS, JS, Dasturlash, Med Texnikum (1-3 kurs), Tibbiyot, 1-12 sinf Maktab fanlari, Tillar va Telekommunikatsiya test hamda nazariya platformasi.",
+  "description": "Sayt admini: Usmonov Azimjon Akmaljon o'g'li. Barcha operatsion tizimlarda (Windows, macOS, Linux, Android, iOS) 24/7 ishlovchi 10 tilda cheksiz lug'at (Tojik, Turk, Afg'on va boshqalar), bog'cha bolalari uchun tugamaydigan she'rlar, boshlang'ich maktabga tayyorgarlik darsliklari, test va rasmiy A4 Sertifikat platformasi.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#070d19",
@@ -10,6 +10,11 @@
     {
       "src": "assets/logo.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/bg-education.png",
+      "sizes": "1200x630",
       "type": "image/png"
     }
   ]
