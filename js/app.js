@@ -661,7 +661,10 @@ function openSubjectTheory(subjectId) {
     ${theoryBlocksHtml}
     ${practicalHtml}
 
-    <div style="text-align:center; margin: 22px 0;">
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin: 22px 0;">
+      <button class="btn btn-gold" onclick="openSubjectTheory('${subject.id}')">
+        🔄 Darslik va Amaliy Mashg'ulotlarni Yangilash (+Yangi Misollar)
+      </button>
       <button class="btn btn-primary" onclick="initiateSubjectTest('${subject.id}')">
         🚀 Shu mavzu bo'yicha 30 talik Testni Boshlash
       </button>
@@ -1741,20 +1744,24 @@ function renderDictionaryExplorer() {
   });
 
   if (infoEl) {
-    infoEl.innerHTML = `${langObj.flag} <strong>${escapeHtml(langObj.name)}</strong> bo'yicha ko'rsatilmoqda: <strong>${filtered.length}</strong> ta so'z va ibora (Boshlang'ich A1 dan C2 oxirigacha cheksiz yangi so'zlar yuklash mumkin) | 👑 Sayt admini: <strong>${ADMIN_NAME}</strong>`;
+    infoEl.innerHTML = `${langObj.flag} <strong>${escapeHtml(langObj.name)}</strong> bo'yicha ko'rsatilmoqda: <strong>${filtered.length}</strong> ta so'z va ibora (Avtomatik va tugma orqali doimiy yangilanib turadi) | 👑 Sayt admini: <strong>${ADMIN_NAME}</strong>`;
   }
 
   const testSubjectMap = {
     tajik: "tojik-tili",
     turkish: "turk-tili",
     afghan: "afgon-tili",
+    arabic: "arab-tili",
     english: "ingliz-tili",
     russian: "rus-tili",
     german: "nemis-tili",
     chinese: "xitoy-tili",
-    korean: "koreys-tili"
+    korean: "koreys-tili",
+    french: "fransuz-tili",
+    spanish: "ispan-tili",
+    japanese: "yapon-tili"
   };
-  const mappedTestId = testSubjectMap[activeDictLang] || "ingliz-tili";
+  const mappedTestId = langObj.testId || testSubjectMap[activeDictLang] || "ingliz-tili";
 
   gridEl.innerHTML = filtered.map(w => `
     <div class="subject-card">
@@ -1768,21 +1775,30 @@ function renderDictionaryExplorer() {
         <p style="font-size:0.96rem; color:#ffffff; font-weight:700; margin-bottom:8px;">🇺🇿 <strong>O'zbekcha ma'nosi:</strong> ${escapeHtml(w.uz)}</p>
         <p style="font-size:0.83rem; color:var(--text-muted); border-top:1px solid rgba(148,163,184,0.15); padding-top:8px;">💬 ${escapeHtml(w.example)}</p>
       </div>
-      <div style="display:flex; justify-content:space-between; gap:8px; margin-top:10px;">
-        <button class="btn btn-secondary" onclick="speakDictText('${escapeHtml(w.pron.replace(/'/g, ""))}', '${langObj.speechLang}')">🔊 Talaffuzni eshitish</button>
-        <button class="btn btn-primary" onclick="initiateSubjectTest('${mappedTestId}')">🚀 Shu tildan Test</button>
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-top:10px;">
+        <button class="btn btn-secondary" onclick="speakDictText('${escapeHtml(w.pron.replace(/'/g, ""))}', '${langObj.speechLang}')">🔊 Talaffuz</button>
+        <button class="btn btn-gold" onclick="openSubjectTheory('${mappedTestId}')">📚 Darsligi</button>
+        <button class="btn btn-primary" onclick="initiateSubjectTest('${mappedTestId}')">🚀 Test</button>
       </div>
     </div>
   `).join("");
 }
 
 /* ==========================================================================
-   PRESCHOOL POEMS & ELEMENTARY SCHOOL PREPARATION TEXTBOOKS HUB
+   PRESCHOOL POEMS & ELEMENTARY SCHOOL + ALL LANGUAGES TEXTBOOKS HUB
+   Continuously Updating ("yangilanib tursin")
    ========================================================================== */
 let activePoemCat = "ALL";
+let activeTextbookGroup = "ALL";
+let autoUpdateCurriculumEnabled = true;
 
 function filterPreschoolPoems(cat) {
   activePoemCat = cat;
+  renderPreschoolHub();
+}
+
+function filterTextbooksByGroup(grp) {
+  activeTextbookGroup = grp;
   renderPreschoolHub();
 }
 
@@ -1793,9 +1809,28 @@ function loadMorePreschoolPoems(amount = 6) {
   renderPreschoolHub();
 }
 
+function refreshAllTextbooksNow(cycles = 1) {
+  if (typeof updateAndGenerateMoreTextbooks === "function") {
+    updateAndGenerateMoreTextbooks(cycles);
+  }
+  renderPreschoolHub();
+  renderDictionaryExplorer();
+}
+
+function toggleCurriculumAutoUpdate() {
+  autoUpdateCurriculumEnabled = !autoUpdateCurriculumEnabled;
+  const btn = document.getElementById("btnToggleAutoUpdate");
+  if (btn) {
+    btn.textContent = autoUpdateCurriculumEnabled
+      ? "🟢 Avto-Yangilanish: FAOL (Har 12s yangi dars qo'shiladi)"
+      : "⏸️ Avto-Yangilanish: To'xtatilgan (Yoqish uchun bosing)";
+  }
+}
+
 function renderPreschoolHub() {
   const poemCatsEl = document.getElementById("preschoolPoemCatPills");
   const poemsGridEl = document.getElementById("preschoolPoemsGrid");
+  const textbookCatsEl = document.getElementById("preschoolTextbookCatPills");
   const textbooksGridEl = document.getElementById("preschoolTextbooksGrid");
   if (!poemsGridEl || typeof PRESCHOOL_POEMS === "undefined") return;
 
@@ -1829,13 +1864,31 @@ function renderPreschoolHub() {
     </div>
   `).join("");
 
+  if (textbookCatsEl && typeof PRESCHOOL_TEXTBOOKS !== "undefined") {
+    const tbGroups = [
+      { id: "ALL", label: `📚 Barcha Darsliklar (${PRESCHOOL_TEXTBOOKS.length} ta)` },
+      { id: "featured-langs", label: "🇹🇯🇹🇷🇦🇫 Tojik, Turk, Afg'on va 12 Tilli Darsliklar" },
+      { id: "world-langs", label: "🌍 Qo'shimcha Jahon Tillari Darsliklari (Arab, Ingliz, Rus, Nemis, Xitoy, Koreys, Fransuz, Ispan, Yapon)" },
+      { id: "maktab", label: "🎒 Boshlang'ich Maktabga Tayyorgarlik Darsliklari" }
+    ];
+    textbookCatsEl.innerHTML = tbGroups.map(g => `
+      <button class="cat-pill ${g.id === activeTextbookGroup ? "active" : ""}" onclick="filterTextbooksByGroup('${g.id}')">
+        ${g.label}
+      </button>
+    `).join("");
+  }
+
   if (textbooksGridEl && typeof PRESCHOOL_TEXTBOOKS !== "undefined") {
-    textbooksGridEl.innerHTML = PRESCHOOL_TEXTBOOKS.map(tb => `
+    const filteredTbs = PRESCHOOL_TEXTBOOKS.filter(tb => activeTextbookGroup === "ALL" || tb.group === activeTextbookGroup);
+    textbooksGridEl.innerHTML = filteredTbs.map(tb => `
       <div class="subject-card">
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
             <span style="font-size:1.7rem;">${tb.icon}</span>
             <span class="subject-tag">${escapeHtml(tb.levelBadge)}</span>
+          </div>
+          <div style="font-size:0.74rem; color:#34d399; font-weight:800; margin-bottom:6px;">
+            ⚡ ${escapeHtml(tb.updatedAt || "Jonli yangilanmoqda")}
           </div>
           <h3 style="color:#fbbf24; font-size:1.12rem; margin-bottom:8px;">${escapeHtml(tb.title)}</h3>
           <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:10px;">${escapeHtml(tb.summary)}</p>
@@ -1846,8 +1899,9 @@ function renderPreschoolHub() {
             🎯 <strong>${escapeHtml(tb.interactiveTask)}</strong>
           </div>
         </div>
-        <div style="display:flex; gap:8px; margin-top:12px;">
-          <button class="btn btn-gold" style="flex:1;" onclick="initiateSubjectTest('${tb.subjectTestId}')">🚀 Shu darslikdan 30 talik Testni Boshlash</button>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+          <button class="btn btn-secondary" style="flex:1;" onclick="openSubjectTheory('${tb.subjectTestId}')">📖 Kengaytirilgan Nazariya</button>
+          <button class="btn btn-gold" style="flex:1;" onclick="initiateSubjectTest('${tb.subjectTestId}')">🚀 30 talik Test</button>
         </div>
       </div>
     `).join("");
@@ -1981,10 +2035,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 1000);
 
-  // Category filter buttons
-  document.querySelectorAll(".cat-pill").forEach(btn => {
+  // Continuous Live Update for Language & School Textbooks + Dictionary ("yangilanib tursin")
+  setInterval(() => {
+    if (!autoUpdateCurriculumEnabled) return;
+    if (typeof updateAndGenerateMoreTextbooks === "function") {
+      updateAndGenerateMoreTextbooks(1);
+      const preschoolSec = document.getElementById("viewPreschool");
+      if (preschoolSec && !preschoolSec.classList.contains("hidden")) {
+        renderPreschoolHub();
+      }
+      const dictSec = document.getElementById("viewDictionary");
+      if (dictSec && !dictSec.classList.contains("hidden")) {
+        renderDictionaryExplorer();
+      }
+    }
+  }, 12000);
+
+  // Category filter buttons on Home view
+  document.querySelectorAll("#viewHome .cat-pill[data-cat]").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".cat-pill").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll("#viewHome .cat-pill[data-cat]").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       AppState.currentCategory = btn.dataset.cat;
       renderSubjectsGrid();

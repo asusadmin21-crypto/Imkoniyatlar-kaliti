@@ -1,13 +1,13 @@
-const CACHE_NAME = 'imkoniyatlar-kaliti-24-7-v4';
+const CACHE_NAME = 'imkoniyatlar-kaliti-24-7-v5';
 const ASSETS = [
   './',
   './index.html',
-  './css/style.css?v=4',
-  './js/i18n.js?v=4',
-  './js/data-telecom.js?v=4',
-  './js/data-subjects.js?v=4',
-  './js/data-extra.js?v=4',
-  './js/app.js?v=4',
+  './css/style.css?v=5',
+  './js/i18n.js?v=5',
+  './js/data-telecom.js?v=5',
+  './js/data-subjects.js?v=5',
+  './js/data-extra.js?v=5',
+  './js/app.js?v=5',
   './assets/logo.png',
   './assets/bg-education.png'
 ];

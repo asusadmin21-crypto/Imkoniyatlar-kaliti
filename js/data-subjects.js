@@ -644,6 +644,90 @@ const SUBJECTS_CATALOG = [
       }
     ]
   },
+  {
+    id: "arab-tili",
+    category: "langs",
+    icon: "🇸🇦",
+    title: "Arab Tili (العربية — Alifbo, Tajvid, Nahv-Sarf va A1–C2 Muloqot Darsligi)",
+    tag: "Qo'shimcha Til ★ A1–C2",
+    levels: [
+      "A1 — Boshlang'ich (28 harf, Fatha/Kasra/Damma harakatlar va Salomlashish)",
+      "A2 — Tayanch (Oila, Maktab, Bozor va Kundalik muloqot iboralari)",
+      "B1 — O'rta (Sarf va Nahv grammatikasi, Ism va Fe'lli jumlalar)",
+      "B2 — Yuqori o'rta (Matbuot, Tibbiyot, Tijorat va Rasmiy Arab tili)",
+      "C1–C2 — Mukammal (Fusha adabiy tili, Balog'at va Akademik tarjimonlik)"
+    ],
+    desc: "Arab alifbosi (28 ta harfning 4 xil ko'rinishi), harakatlar, tanvin, tashdid, Nahv va Sarf grammatikasi, A1 dan C2 gacha lug'at va darsliklar.",
+    theory: [
+      {
+        title: "Arab Alifbosi (28 Harf), Harakatlar (Fatha, Kasra, Damma) va Jumla Qurilishi",
+        body: "Arab yozuvi o'ngdan chapga yoziladi. Qisqa unlilar harakatlar bilan ifodalanadi: Fatha (ـَ a/e), Kasra (ـِ i), Damma (ـُ u). Arab tilida gap ikki xil bo'ladi: Jumlai Ismiya (ot bilan boshlanuvchi: الْعِلْمُ نُورٌ — Ilm nurdir) va Jumlai Fe'liya (fe'l bilan boshlanuvchi)."
+      }
+    ]
+  },
+  {
+    id: "fransuz-tili",
+    category: "langs",
+    icon: "🇫🇷",
+    title: "Fransuz Tili (Français — Boshlang'ich A1 dan C2 DELF/DALF Darslik va Lug'at)",
+    tag: "Qo'shimcha Til ★ DELF A1–C2",
+    levels: [
+      "A1 — Boshlang'ich (Talaffuz qoidalari, Artikllar va Salomlashish)",
+      "A2 — Elementar (Présent, Passé Composé va Kundalik muloqot)",
+      "B1 — O'rta (DELF B1, Sayohat, O'qish va Ish muloqoti)",
+      "B2 — Yuqori o'rta (DELF B2, Fransiya va Yevropa OTMlariga kirish)",
+      "C1–C2 — Mukammal (DALF C1/C2, Diplomatiya va Ilmiy Fransuz tili)"
+    ],
+    desc: "Fransuz tili fonetikasi, artikllar (le, la, les, un, une, des), fe'l tuslanishlari (être, avoir, aller), DELF/DALF darsliklari va cheksiz lug'at.",
+    theory: [
+      {
+        title: "Fransuz Tilida Artikllar, Bog'lanish (Liaison) va Asosiy Fe'llar",
+        body: "Fransuz tilida otlar rodga ega: le livre (kitob — m.r.), la table (stol — j.r.). Être (bo'lmoq): je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont. Salomlashish: Bonjour (Xayrli kun), Merci beaucoup (Katta rahmat), La Clé des Opportunités (Imkoniyatlar kaliti)."
+      }
+    ]
+  },
+  {
+    id: "ispan-tili",
+    category: "langs",
+    icon: "🇪🇸",
+    title: "Ispan Tili (Español — Boshlang'ich A1 dan C2 DELE Darslik va Muloqot)",
+    tag: "Qo'shimcha Til ★ DELE A1–C2",
+    levels: [
+      "A1 — Boshlang'ich (Alifbo, Ser va Estar fe'llari, Salomlashish)",
+      "A2 — Tayanch (Kundalik hayot, Sayohat va Zamonlar)",
+      "B1 — O'rta (DELE B1, Grammatika va Erkin suhbat)",
+      "B2 — Yuqori o'rta (DELE B2, Xalqaro biznes va OTM)",
+      "C1–C2 — Mukammal (DELE C1/C2, Akademik va Adabiy Ispan tili)"
+    ],
+    desc: "Dunyo bo'ylab 500 milliondan ortiq inson so'zlashuvchi Ispan tili: Ser/Estar farqi, artikllar (el, la, los, las), zamonlar va cheksiz lug'at.",
+    theory: [
+      {
+        title: "Ispan Tilida 'Ser' va 'Estar' Fe'llari hamda Kundalik Muloqot",
+        body: "Doimiy xususiyatlar uchun 'Ser' (Yo soy estudiante — Men talabaman), vaqtinchalik holat va joylashuv uchun 'Estar' (Estoy bien — Yaxshiman) ishlatiladi. ¡Hola! (Salom), ¡Buenos días! (Xayrli tong), ¡Muchas gracias! (Katta rahmat), La Llave de las Oportunidades (Imkoniyatlar kaliti)."
+      }
+    ]
+  },
+  {
+    id: "yapon-tili",
+    category: "langs",
+    icon: "🇯🇵",
+    title: "Yapon Tili (日本語 — Hiragana, Katakana, Kanji va JLPT N5–N1 Darslik)",
+    tag: "Qo'shimcha Til ★ JLPT N5–N1",
+    levels: [
+      "N5 (A1) — Boshlang'ich (Hiragana, Katakana, Salomlashish va 100 Kanji)",
+      "N4 (A2) — Tayanch (Kundalik suhbat, 300 Kanji va Grammatika)",
+      "N3 (B1) — O'rta (Yaponiyada o'qish va ishlash muloqoti)",
+      "N2 (B2) — Yuqori o'rta (Biznes, IT va Texnik Yapon tili)",
+      "N1 (C1–C2) — Mukammal (2000+ Kanji, Akademik va Rasmiy uslub)"
+    ],
+    desc: "Yapon yozuv tizimi (Hiragana, Katakana, Kanji), Desu/Masu xushmuomalalik shakli, ko'makchilar (wa, ga, wo, ni, de) va JLPT N5–N1 darsliklari.",
+    theory: [
+      {
+        title: "Yapon Tilining 3 Yozuv Tizimi (Hiragana, Katakana, Kanji) va Gap Qurilishi",
+        body: "Yapon tilida kesim gap oxirida keladi (SOV). Asosiy iboralar: こんにちは (Konnichiwa — Salom), おはようございます (Ohayou gozaimasu — Xayrli tong), ありがとうございます (Arigatou gozaimasu — Katta rahmat), 機会の鍵 (Kikai no Kagi — Imkoniyatlar kaliti)."
+      }
+    ]
+  },
 
   // ===================== 6. BOG'CHA VA BOSHLANG'ICH MAKTABGA TAYYORGARLIK =====================
   {
@@ -1061,6 +1145,23 @@ function generateParametricQuestion(subject, level, variantIndex, daySeed) {
         { k: "af_school", q: "Dari va Pushtu tillarida 'Maktab', 'O'qituvchi' va 'Kitob' so'zlari qanday yoziladi?", a: "مکتب / ښوونځی (Maktab / Shovunzay), معلم / ښوونکی (Muallim / Shovunkay), کتاب (Kitob)", w: ["بازار، دکان، پیسې", "سیند، غر، اسمان", "موټر، الوتکه، اورګاډی"], e: "Pushtu tilida ښوونځی (Shovunzay) — maktab, ښوونکی (Shovunkay) — o'qituvchi; Dari tilida مکتب va معلم." },
         { k: "af_family", q: "Pushtu va Dari tillarida 'Ona va Ota' so'zlari qanday ifodalanadi?", a: "مور او پلار (Mor aw Plar) / مادر و پدر (Modar va Padar)", w: ["ورور او خور (Aka va Opa)", "ملګری او ګاونډی (Do'st va Qo'shni)", "طبیب او ناروغ (Shifokor va Bemor)"], e: "Pushtu tilida مور (Mor — Ona) va پلار (Plar — Ota); Dari tilida مادر (Modar) va پدر (Padar)." },
         { k: "af_key", q: "Dari va Pushtu tillarida 'Imkoniyatlar kaliti' va 'Bilim — nurdir' iboralari qanday yoziladi?", a: "کلید امکانات / د فرصتونو کیلي va علم نور است / پوهنه رڼا ده", w: ["دروازه بزرگ va خانه نو", "آب صاف va نان گرم", "سفر دور va راه دراز"], e: "کلید امکانات / د فرصتونو کیلي — Imkoniyatlar kaliti; پوهنه رڼا ده — Bilim nurdir." }
+      ],
+      "arab-tili": [
+        { k: "ar_greet", q: "Arab tilida 'Xayrli tong' va 'Katta rahmat (Alloh yaxshilik bilan mukofotlasin)' iboralari qanday aytiladi?", a: "صَبَاحُ الْخَيْرِ (Sabahul khayr) va شُكْرًا جَزِيلًا / جَزَاكَ اللَّهُ خَيْرًا", w: ["مَسَاءُ النُّورِ / عَفْوًا", "إِلَى اللِّقَاءِ / مَعَ السَّلَامَةِ", "نَعَمْ / لَا"], e: "صَبَاحُ الْخَيْرِ — Xayrli tong, شُكْرًا جَزِيلًا — Katta rahmat." },
+        { k: "ar_key", q: "Arab tilida 'Imkoniyatlar kaliti' va 'Ilm — nurdir' jumlalari qanday yoziladi?", a: "مِفْتَاحُ الْفُرَصِ (Miftahul furas) va الْعِلْمُ نُورٌ (Al-ilmu nurun)", w: ["بَابُ الْبَيْتِ va الْمَاءُ بَارِدٌ", "سَيَّارَةٌ جَدِيدَةٌ va طَرِيقٌ طَوِيلٌ", "سُوقُ الْمَدِينَةِ va يَوْمٌ جَمِيلٌ"], e: "مِفْتَاحُ الْفُرَصِ — Imkoniyatlar kaliti, الْعِلْمُ نُورٌ — Ilm nurdir." },
+        { k: "ar_school", q: "Arab tilida 'Maktab', 'O'qituvchi' va 'Kitob' so'zlari qaysi qatorda to'g'ri berilgan?", a: "مَدْرَسَةٌ (Madrasatun — Maktab), مُعَلِّمٌ / أُسْتَاذٌ (Mu'allim — O'qituvchi), كِتَابٌ (Kitabun — Kitob)", w: ["مُسْتَشْفَى، طَبِيبٌ، دَوَاءٌ", "مَطَارٌ، طَائِرَةٌ، مُسَافِرٌ", "مَطْعَمٌ، خُبْزٌ، فَاكِهَةٌ"], e: "مَدْرَسَةٌ — maktab, مُعَلِّمٌ — o'qituvchi, كِتَابٌ — kitob." }
+      ],
+      "fransuz-tili": [
+        { k: "fr_greet", q: "Fransuz tilida 'Xayrli kun', 'Katta rahmat' va 'Imkoniyatlar kaliti' iboralari qanday yoziladi?", a: "Bonjour / Merci beaucoup / La Clé des Opportunités", w: ["Bonsoir / Pardon / La Porte de la Maison", "Au revoir / Oui / Le Grand Jardin", "S'il vous plaît / Non / La Voiture Rouge"], e: "Bonjour — Xayrli kun, Merci beaucoup — Katta rahmat, La Clé des Opportunités — Imkoniyatlar kaliti." },
+        { k: "fr_school", q: "Fransuz tilida 'Maktab (l'école)', 'O'qituvchi (le professeur)' va 'O'quvchi (l'élève)' so'zlarining ma'nosi qaysi qatorda to'g'ri?", a: "l'école — Maktab, le professeur — O'qituvchi, l'élève — O'quvchi", w: ["l'hôpital — Bog'cha, le médecin — Muhandis", "la gare — Kutubxona, le train — Kitob", "le marché — Universitet, le pain — Daftar"], e: "l'école — maktab, le professeur — o'qituvchi, l'élève — o'quvchi." }
+      ],
+      "ispan-tili": [
+        { k: "es_greet", q: "Ispan tilida 'Xayrli tong', 'Katta rahmat' va 'Imkoniyatlar kaliti' qanday aytiladi?", a: "¡Buenos días! / ¡Muchas gracias! / La Llave de las Oportunidades", w: ["¡Buenas noches! / De nada / El Libro Nuevo", "Hasta luego / Por favor / La Casa Grande", "Perdón / Sí / El Coche Rápido"], e: "¡Buenos días! — Xayrli tong, ¡Muchas gracias! — Katta rahmat, La Llave de las Oportunidades — Imkoniyatlar kaliti." },
+        { k: "es_school", q: "Ispan tilida 'la escuela (colegio)', 'el profesor (maestro)' va 'el libro' so'zlari nimani anglatadi?", a: "Maktab, O'qituvchi va Kitob", w: ["Shifoxona, Shifokor va Dori", "Aeroport, Uchuvchi va Samolyot", "Bozor, Sotuvchi va Meva"], e: "la escuela — maktab, el profesor — o'qituvchi, el libro — kitob." }
+      ],
+      "yapon-tili": [
+        { k: "ja_greet", q: "Yapon tilida 'Xayrli tong', 'Salom (kunduzi)' va 'Katta rahmat' iboralari qanday aytiladi?", a: "おはようございます (Ohayou gozaimasu), こんにちは (Konnichiwa), ありがとうございます (Arigatou gozaimasu)", w: ["さようなら, すみません, いいえ", "おやすみなさい, ごめんなさい, はい", "いただきます, ごちそうさまでした"], e: "Ohayou gozaimasu — Xayrli tong, Konnichiwa — Salom, Arigatou gozaimasu — Katta rahmat." },
+        { k: "ja_school", q: "Yapon tilida '学校 (Gakkou)', '先生 (Sensei)' va '本 (Hon)' so'zlarining ma'nosi nima?", a: "学校 (Gakkou) — Maktab, 先生 (Sensei) — Ustoz/O'qituvchi, 本 (Hon) — Kitob", w: ["Shifoxona, Hamshira, Dori", "Vokzal, Poyezd, Chipta", "Daryo, Tog', O'rmon"], e: "Gakkou — maktab, Sensei — ustoz/o'qituvchi, Hon — kitob." }
       ]
     };
     const list = langItems[subId];

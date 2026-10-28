@@ -47,10 +47,10 @@
   }
   </script>
 
-  <link rel="manifest" href="manifest.json?v=4" />
+  <link rel="manifest" href="manifest.json?v=5" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="apple-touch-icon" href="assets/logo.png" />
-  <link rel="stylesheet" href="css/style.css?v=4" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
 </head>
 <body>
 
@@ -376,13 +376,33 @@
         </div>
       </div>
 
-      <!-- Part 2: Elementary School Preparation Textbooks -->
+      <!-- Part 2: Elementary School Preparation & Additional Languages Textbooks (Continuously Updating) -->
       <div class="test-workspace">
-        <h3 style="color:#38bdf8; font-size:1.3rem; margin-bottom:6px;">🎒 2-Bo'lim: Boshlang'ich maktabga tayyorgarlikka oid eng zo'r interaktiv darsliklar</h3>
-        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:18px;">
-          Alifbe va savodxonlik, Qiziqarli matematika, Atrof-olam, Nutq o'stirish va topishmoqlar, Bolalar uchun xorijiy tillar (Tojik, Turk, Afg'on, Ingliz, Rus) hamda Motorika darsliklari!
-        </p>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+          <div>
+            <h3 style="color:#38bdf8; font-size:1.3rem; margin-bottom:4px;">🎒 2-Bo'lim: Boshlang'ich Maktabga Tayyorgarlik va Barcha Qo'shimcha Tillar Darsliklari (Doimiy Yangilanib Turadi)</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted);">
+              Alifbe, Qiziqarli matematika, Atrof-olam, Nutq o'stirish, Motorika hamda <strong>Tojik, Turk, Afg'on (Dari/Pushtu), Arab, Ingliz, Rus, Nemis, Xitoy, Koreys, Fransuz, Ispan va Yapon tillari</strong> bo'yicha jonli yangilanib turadigan interaktiv darsliklar!
+            </p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <button id="btnToggleAutoUpdate" class="btn btn-secondary" onclick="toggleCurriculumAutoUpdate()">
+              🟢 Avto-Yangilanish: FAOL (Har 12s yangi dars qo'shiladi)
+            </button>
+            <button class="btn btn-gold" onclick="refreshAllTextbooksNow(1)">
+              🔄 Darsliklarni Hozir Yangilash (+Yangi Dars va Mashqlar)
+            </button>
+          </div>
+        </div>
+
+        <div class="category-pills" id="preschoolTextbookCatPills" style="margin-bottom:18px;"></div>
         <div class="subjects-grid" id="preschoolTextbooksGrid"></div>
+
+        <div style="text-align:center; margin-top:20px;">
+          <button class="btn btn-primary" onclick="refreshAllTextbooksNow(2)">
+            ⚡ Barcha Tillar va Maktab Darsliklariga Yana +2 Bosqich Yangi Darslar Yuklash (Cheksiz Yangilanadi)
+          </button>
+        </div>
       </div>
     </section>
 
@@ -818,15 +838,15 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/i18n.js?v=4"></script>
-  <script src="js/data-telecom.js?v=4"></script>
-  <script src="js/data-subjects.js?v=4"></script>
-  <script src="js/data-extra.js?v=4"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/i18n.js?v=5"></script>
+  <script src="js/data-telecom.js?v=5"></script>
+  <script src="js/data-subjects.js?v=5"></script>
+  <script src="js/data-extra.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=4').then(reg => {
+        navigator.serviceWorker.register('./sw.js?v=5').then(reg => {
           reg.update();
         }).catch(() => {});
       });
